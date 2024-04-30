@@ -1,0 +1,238 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#header {
+    position: absolute;
+    max-height: 64px;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(31, 54, 61, 1);
+    /* Adjust the background color and opacity to match the sidebar */
+    color: #fff;
+    padding: 15px;
+    z-index: 1001;
+    /* Higher than the sidebar to ensure it stays on top */
+}
+
+#header h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 24px;
+    margin: 0;
+    /* Remove default margin */
+    padding-left: 20px;
+}
+
+#sidebar {
+    position: absolute;
+    left: 0;
+    /* Adjust top position to make room for the header */
+    width: 320px;
+    /* 侧边栏宽度 */
+    top: 0;
+    bottom: 0;
+    background-color: #1f363d;
+    /* 白色背景 */
+    color: #fff;
+    /* 黑色文字，确保对比度和可读性 */
+    opacity: 0.8;
+    /* 适当的不透明度，如果你需要的话 */
+    z-index: 1000;
+    /* 确保侧边栏在地图层之上 */
+    padding: 20px;
+    /* 添加一些内边距 */
+}
+
+#Intro h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 22px;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+#sidebar p {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.first-paragraph {
+    margin-top: 30px; 
+}
+
+#sidebar .credit {
+    margin: 10px 0 0 60px;
+    padding: 0;
+    position: absolute;
+    bottom: 15px;
+}
+
+.credit a {
+    color: #6b9080; /* 设置您喜欢的颜色 */
+
+}
+
+
+#layer-controls {
+    margin-top: 8px;
+}
+
+#map {
+    position: absolute;
+    left: 0;
+    /* 从sidebar的右边界开始 */
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#map-border {
+    position: absolute;
+    left: 360px;
+    /* 将边框向左移动，与侧边栏对齐 */
+    top: 58px;
+    right: 0;
+    bottom: 0;
+    border: 7px solid;
+    /* 设置边框宽度 */
+    border-color: #1f363d;
+    opacity: 0.8;
+    /* 设置边框颜色和透明度 */
+    pointer-events: none;
+    /* 确保边框不会阻止地图的交互功能 */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+#legend {
+    font-family: Arial, sans-serif;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+#legend h4 {
+    margin: 0 0 10px;
+}
+
+#legend h5 {
+    margin: 0 0 10px;
+}
+
+#legend div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+/*  to make sure the search bar and button are in the same style */
+
+#sidebar select {
+    width:100%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    /* 确保内边距和边框不增加元素的总宽度 */
+    height: 30px;
+}
+
+#search-container {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+#point-search {
+    flex-grow: 1;
+    margin-top: 10px;
+    height: 30px;
+    box-sizing: border-box;
+}
+
+#search-button {
+    margin-top: 10px;
+    width: 80px;
+    height: 30px;
+    /* 缩短按钮宽度为80px */
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    height: 90%;
+    /* 或根据实际需要调整 */
+    width: 40px;
+    /* 调整宽度以适应竖排文字 */
+    position: absolute;
+    /* 将标签固定在侧边 */
+    left: 0;
+    top: 64px;
+    /* 根据header的高度调整 */
+}
+
+.tab button {
+    background-color: inherit;
+    height: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 0;
+    /* 调整内边距以适应竖直排列 */
+    transition: 0.3s;
+    font-size: 15px;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    position: absolute;
+    left: 60px;
+    /* 根据.tab的宽度调整 */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    flex-grow: 1;
+    overflow: auto;
+    /* 添加滚动条以适应内容 */
+    padding: 12px 12px;
+    padding-top: 75px;
+    border-top: none;
+    border-left: none;
+    /* 如果希望与侧边标签视觉上分隔开来 */
+}
+
+#chartContainer {
+    padding: 10px;
+    height: 83%; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
