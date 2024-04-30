@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrollable Sections</title>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+
+<script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+
+<link href='../css/map.css' rel="stylesheet">
+
+<!-- <link href='css/real.css' rel="stylesheet"> -->
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+    }
+    nav {
+        position: fixed;
+        width: 100%;
+        background: #333;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 1000;
+    }
+    nav a {
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    section {
+        width: 100%;
+        height: 100vh; /* 100% of the viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        color: white;
+        text-align: center;
+    }
+    #section1 { background: #ff6347; } /* Tomato */
+    #section2 { background: #4682b4; } /* SteelBlue */
+    #section3 { background: #32cd32; } /* LimeGreen */
+    #section4 { background: #ffa500; } /* Orange */
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="#section1">Section 1</a>
+    <a href="#section2">Section 2</a>
+    <a href="#section3">Section 3</a>
+    <a href="#section4">Section 4</a>
+</nav>
+
+<section id="section1">Section 1 Content</section>
+<section id="section2">
+    <div id="map"></div>
+</section>
+<section id="section3">Section 3 Content</section>
+<section id="section4">Section 4 Content</section>
+
+</body>
+
+<script src="../js/map.js"></script>
+</html>
