@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scrollable Sections</title>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+
+<link href='../css/map.css' rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
 
 <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
 
-<link href='../css/map.css' rel="stylesheet">
 
 <!-- <link href='css/real.css' rel="stylesheet"> -->
 <style>
@@ -48,7 +50,7 @@
 </style>
 </head>
 <body>
-
+    
 <nav>
     <a href="#section1">Section 1</a>
     <a href="#section2">Section 2</a>
@@ -58,7 +60,20 @@
 
 <section id="section1">Section 1 Content</section>
 <section id="section2">
+    <div id="sidebar" style="width: 200px; height: 100vh; background-color: #fff; color: #333; padding: 20px;">
+        Sidebar Content Here
+    </div>
     <div id="map"></div>
+    <div id="legend" style="position: absolute; bottom: 20px; right: 10px; background: rgba(33, 33, 33, 0.8); padding: 10px; border-radius: 5px;font-size: 12px;">
+        <h4>Employment Level</h4>
+        <div><span style="background-color: #F2F12D; width: 15px; height: 15px; display: inline-block;"></span> 0</div>
+        <div><span style="background-color: #EED322; width: 15px; height: 15px; display: inline-block;"></span> 10,000</div>
+        <div><span style="background-color: #E6B71E; width: 15px; height: 15px; display: inline-block;"></span> 50,000</div>
+        <div><span style="background-color: #DA9C20; width: 15px; height: 15px; display: inline-block;"></span> 100,000</div>
+        <div><span style="background-color: #CA8323; width: 15px; height: 15px; display: inline-block;"></span> 200,000</div>
+        <div><span style="background-color: #B86B25; width: 15px; height: 15px; display: inline-block;"></span> 500,000+</div>
+    </div>
+    
 </section>
 <section id="section3">Section 3 Content</section>
 <section id="section4">Section 4 Content</section>
