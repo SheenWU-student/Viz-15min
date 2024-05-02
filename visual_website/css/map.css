@@ -1,5 +1,29 @@
 section {
     position: relative; /* 确保 section 具有相对定位 */
+    border: 25px solid #333;
+    box-sizing: border-box; /* 边框和内填充包含在宽度和高度内 */
+    z-index: 100;
+}
+
+#section0 {
+    border: none; /* 移除id为section0的元素的边框 */
+    background-image: url('../html/image/1.jpg'); /* 设置背景图片 */
+    background-size: cover; /* 覆盖整个section，不重复 */
+    background-position: center; /* 图片居中显示 */
+    background-repeat: no-repeat; /* 不重复背景图 */
+    color: rgb(255, 255, 255); /* 设置文字颜色 */
+    padding-top: 70px; /* 顶部填充 */
+}
+
+#section0 h1 {
+    font-size: 30px; /* 注释文字的大小 */
+    color: rgb(255, 255, 255); /* 可以选择一种较淡的颜色以区分注释和主文字 */
+}
+
+#section0 .note {
+    font-size: 14px; /* 注释文字的大小 */
+    color: rgb(255, 255, 255); /* 可以选择一种较淡的颜色以区分注释和主文字 */
+    margin-top: 5px; /* 在主文字和注释之间添加一些空间 */
 }
 
 #map {
@@ -8,4 +32,16 @@ section {
     position: absolute; /* 绝对定位确保填满 section */
     top: 0;
     left: 0;
+    z-index: 900;
+}
+
+#sidebar {
+    position: absolute; /* 绝对定位 */
+    left: 0;            /* 位置靠最左 */
+    top: 0;             /* 位置靠顶部 */
+    z-index: 1000;     /* 确保它在大多数元素之上 */
+}
+
+#legend {
+    z-index: 1000;
 }
