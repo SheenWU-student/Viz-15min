@@ -10,25 +10,16 @@ var map = new mapboxgl.Map({
 map.on('load', function() {
     map.addSource('ACL', {
         type: 'geojson',
-        data: 'data/ACL_trans.geojson'
+        data: '../data/ACL_trans.geojson'
     });
 
-    map.addSource('ACL', {
+    map.addSource('borough', {
         type: 'geojson',
-        data: 'data/london-boroughs_1179.geojson'
+        data: '../data/london-boroughs_1179.geojson'
     });
-
-    map.getSource('ACL').on('data', function(e) {
-        if (e.isSourceLoaded) {
-            // 当数据完全加载时打印出来
-            console.log('GeoJSON data:', e.source.data);
-        }
-    });
-
-    map.get
 
     map.addLayer({
-        id: 'geojsonLayer',
+        id: 'employment_15',
         type: 'fill',
         source: 'ACL',
         layout: {},
@@ -53,6 +44,45 @@ map.on('load', function() {
         }
     });
 
+    map.addLayer({      // add stroke on boroughs
+        id: 'borough-stroke',
+        type: 'line',
+        source: 'borough',
+        layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        paint: {
+            'line-color': '#ffffff',
+            'line-width': 1,
+            'line-dasharray': [1, 3]
+        }
+    });
+
+    // document.getElementById('toggle-map-icon').addEventListener('click', function() {
+    //     var mapElement = document.getElementById('map');
+    //     if (mapElement.style.display === 'none') {
+    //         mapElement.style.display = 'block'; // 显示地图
+    //         this.className = 'bi bi-eye'; // 更新图标为眼睛打开
+    //     } else {
+    //         mapElement.style.display = 'none'; // 隐藏地图
+    //         this.className = 'bi bi-eye-slash'; // 更新图标为眼睛关闭
+    //     }
+    // });
+
+    document.getElementById('toggle-map-icon').addEventListener('click', function() {
+        var layerVisibility = map.getLayoutProperty('employment_15', 'visibility');
+    
+        // 切换图层的可见性
+        if (layerVisibility === 'visible') {
+            map.setLayoutProperty('employment_15', 'visibility', 'none'); // 隐藏图层
+            this.className = 'bi bi-eye-slash'; // 更改图标为眼睛关闭
+        } else {
+            map.setLayoutProperty('employment_15', 'visibility', 'visible'); // 显示图层
+            this.className = 'bi bi-eye'; // 更改图标为眼睛打开
+        }
+    });
+    
 });
 
 

@@ -10,9 +10,10 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
 
 <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
 
-<!-- <link href='css/real.css' rel="stylesheet"> -->
+<!-- <link href='css/real.css' rel="stylesheet"> "快捷键coomand+/"" -->
 <style>
     body, html {
         margin: 0;
@@ -55,8 +56,8 @@
 <nav>
     <a href="#section0">Home</a>
     <a href="#section1">Introduction</a>
-    <a href="#section2">How's London?</a>
-    <a href="#section3">How about you?</a>
+    <a href="#section2">London's Accessibility</a>
+    <a href="#section3">Time map</a>
     <a href="#section4">Conclusion</a>
 </nav>
 
@@ -68,11 +69,95 @@
 </section>
 <section id="section1">Section 1 Content</section>
 <section id="section2">
-    <div id="sidebar" style="width: 200px; height: 100vh; background-color: #a7a7a7; color: #ffffff; padding: 20px;">
-        Sidebar Content Here
+
+    <div class="sidebar">
+        Accessible Number of Facilities
+        <div class="layer">
+            <div class="layer-title">
+                Employment
+                <i class="bi bi-eye" id="toggle-map-icon" style="cursor: pointer;"></i>
+            </div>
+            <div class="legend-title">STROKE COLOR BASED ON</div>
+            <ul class="legend-list">
+                
+                <li>
+                    <span class="legend-circle" style="background-color: #053061;"></span> 0
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #2166ac;"></span> 1,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #4393c3;"></span> 5,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #92c5de;"></span> 10,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #fddbc7;"></span> 20,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #f4a582;"></span> 30,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #d6604d;"></span> 40,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #b2182b;"></span> 100,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #b2182b;"></span> 500,000
+                </li>
+                <li>
+                    <span class="legend-circle" style="background-color: #67001f;"></span> 700,000
+                </li>
+            
+            </ul>
+        </div>
+
+        <div class="layer">
+            <div class="layer-title">
+                Urban centre
+                <i class="bi bi-eye"></i>
+            </div>
+        </div>
+
+        <div class="layer">
+            <div class="layer-title">
+                Hospital
+                <i class="bi bi-eye"></i>
+            </div>
+        </div>
+
+        <div class="layer">
+            <div class="layer-title">
+                School
+                <i class="bi bi-eye"></i>
+            </div>
+        </div>
+
+        <div class="layer">
+            <div class="layer-title">
+                Gp
+                <i class="bi bi-eye"></i>
+            </div>
+        </div>
+
+        <div class="layer">
+            <div class="layer-title">
+                Retails(supermarket)
+                <i class="bi bi-eye"></i>
+            </div>
+            <div class="legend-title">COLOR BASED ON</div>
+            <ul class="legend-list">
+                <li>
+                    <span class="legend-circle" style="background-color: #8b008b;"></span> -1.00 - -0.39
+                </li>
+            </ul>
+        </div>
     </div>
+    
     <div id="map"></div>
-    <div id="legend" style="position: absolute; bottom: 20px; right: 10px; background: rgba(33, 33, 33, 0.8); padding: 10px; border-radius: 5px;font-size: 12px;">
+    <!-- <div id="legend" style="position: absolute; bottom: 20px; right: 10px; background: rgba(33, 33, 33, 0.8); padding: 10px; border-radius: 5px;font-size: 12px;"> -->
         <h4>Employment Level</h4>
         <div><span style="background-color: #053061; width: 15px; height: 15px; display: inline-block;"></span> 0</div>
         <div><span style="background-color: #2166ac; width: 15px; height: 15px; display: inline-block;"></span> 1,000</div>
