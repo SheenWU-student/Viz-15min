@@ -1,6 +1,8 @@
 section {
     position: relative; /* 确保 section 具有相对定位 */
-    border: 25px solid #333;
+    border-width: 40px 20px; /* 上下 40px，左右 20px */
+    border-style: solid; /* 确保边框为实线 */
+    border-color: #333; /* 边框颜色 */
     box-sizing: border-box; /* 边框和内填充包含在宽度和高度内 */
     z-index: 100;
 }
@@ -41,23 +43,35 @@ section {
 
 .sidebar {
     position: absolute; /* 绝对定位 */
-    left: 0;            /* 位置靠最左 */
+    right: 0;            /* 位置靠最左 */
     top: 0;             /* 位置靠顶部 */
     z-index: 1100;     /* 确保它在大多数元素之上 */
-    width: 250px;
-    height: 94.5%;
+    width: 22%;
+    height: 100%;
     padding: 20px;
-    background-color: #e0e0e0;
+    box-sizing: border-box; /* 使得padding包含在宽度范围内 */
+    background-color: rgba(235, 235, 235, 0.8); /* 修改背景颜色和透明度 */
     font-family: Arial, sans-serif;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: large;
     color: #333;
+    overflow-y: auto;
+}
+
+.divider {
+    height: 1px; /* 横线高度 */
+    width: 100%; /* 使其与侧边栏宽度一致 */
+    background-color: #8f8f8f; /* 横线颜色 */
+    margin-top: 10px; /* 你可以根据需要调整间距 */
+    margin-bottom: 10px;
 }
 
 .layer {
-    margin-top: 50px;
-    margin-bottom: 20px;
+    border-bottom: 1px solid #bcbcbc; /* 或其他颜色 */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
     color: #333;
     font-size: large;
 }
@@ -104,3 +118,68 @@ section {
     margin-right: 8px;
 }
 
+#toggle-map-icon-em {
+    cursor: pointer;
+    padding: 5px; /* 为图标增加一些内边距，以便更容易点击 */
+    border-radius: 5px; /* 给图标方框一些圆角样式 */
+    transition: background-color 0.2s; /* 平滑过渡效果 */
+}
+
+#toggle-map-icon-em:hover {
+    background-color: #d3d3d3; /* 悬停时背景变暗 */
+}
+
+#toggle-map-icon-urban {
+    cursor: pointer;
+    padding: 5px; /* 为图标增加一些内边距，以便更容易点击 */
+    border-radius: 5px; /* 给图标方框一些圆角样式 */
+    transition: background-color 0.2s; /* 平滑过渡效果 */
+}
+
+#toggle-map-icon-urban:hover {
+    background-color: #d3d3d3; /* 悬停时背景变暗 */
+}
+
+#toggle-map-icon-gp {
+    cursor: pointer;
+    padding: 5px; /* 为图标增加一些内边距，以便更容易点击 */
+    border-radius: 5px; /* 给图标方框一些圆角样式 */
+    transition: background-color 0.2s; /* 平滑过渡效果 */
+}
+
+#toggle-map-icon-gp:hover {
+    background-color: #d3d3d3; /* 悬停时背景变暗 */
+}
+
+#toggle-map-icon-hosp {
+    cursor: pointer;
+    padding: 5px; /* 为图标增加一些内边距，以便更容易点击 */
+    border-radius: 5px; /* 给图标方框一些圆角样式 */
+    transition: background-color 0.2s; /* 平滑过渡效果 */
+}
+
+#toggle-map-icon-hosp:hover {
+    background-color: #d3d3d3; /* 悬停时背景变暗 */
+}
+
+#toggle-map-icon-schp {
+    cursor: pointer;
+    padding: 5px; /* 为图标增加一些内边距，以便更容易点击 */
+    border-radius: 5px; /* 给图标方框一些圆角样式 */
+    transition: background-color 0.2s; /* 平滑过渡效果 */
+}
+
+#toggle-map-icon-schp:hover {
+    background-color: #d3d3d3; /* 悬停时背景变暗 */
+}
+
+#toggle-map-icon-schs {
+    cursor: pointer;
+    padding: 5px; /* 为图标增加一些内边距，以便更容易点击 */
+    border-radius: 5px; /* 给图标方框一些圆角样式 */
+    transition: background-color 0.2s; /* 平滑过渡效果 */
+}
+
+#toggle-map-icon-schs:hover {
+    background-color: #d3d3d3; /* 悬停时背景变暗 */
+}
