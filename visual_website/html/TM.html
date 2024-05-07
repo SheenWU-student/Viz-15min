@@ -101,7 +101,7 @@
 
       }
       const points = await getPoints(data);
-      console.log(9999999);
+      // console.log(9999999);
       showbarchart(points);
     }
 
@@ -119,7 +119,7 @@
         }
         // 将响应体转换为 JSON 并等待结果
         const geojsonData = await response.json();
-        console.log('GeoJSON loaded:', geojsonData);
+        // console.log('GeoJSON loaded:', geojsonData);
         return geojsonData;  // 返回加载的 GeoJSON 数据
       } catch (error) {
         console.error('Error fetching GeoJSON:', error);
@@ -129,7 +129,7 @@
 
     // Call the getIso function
     map.on('load', async function () {
-      console.log('Map loaded');
+      // console.log('Map loaded');
       globalGeojsonData = await downloadData();
       getIso(-0.28, 51.50);
       marker.on('dragend', function () {
@@ -218,7 +218,7 @@
 
     // 一个异步函数，用于获取在多边形内的点
     async function getPoints(data) {
-      console.log('Getting points within polygon');
+      // console.log('Getting points within polygon');
       let polygon = data.features[0]; // 取第一个特征作为多边形，确保这个特征是一个多边形
 
       // 准备一个新的 GeoJSON FeatureCollection 来存储在多边形内的点
@@ -235,7 +235,7 @@
 
 
       // 打印在多边形内的所有点
-      console.log(999, pointsWithinPolygon);
+      // console.log(999, pointsWithinPolygon);
       return pointsWithinPolygon;
 
     }
@@ -255,7 +255,7 @@
         }
       });
 
-      console.log(categoryCounts); // 查看分类计数结果
+      // console.log(categoryCounts); // 查看分类计数结果
 
       //排序
 

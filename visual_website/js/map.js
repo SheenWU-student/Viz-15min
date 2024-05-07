@@ -291,65 +291,96 @@ map.on('load', function() {
 
 });
 
-function loadAndProcessCSV() {
-    fetch('../data/borough-rank.csv')
-        .then(response => response.text())
-        .then(csvText => {
-            Papa.parse(csvText, {
-                header: true,
-                dynamicTyping: true,
-                complete: function(results) {
-                    const data = results.data;
-                    // 假设我们对数据按照 'school_primary_15' 列进行排序并提取前五名
-                    // 提取 School Primary 15 的前五名
-                    const topFiveSchools = [...data].sort((a, b) => b.school_primary_15 - a.school_primary_15).slice(0, 5);
+// function loadAndProcessCSV() {
+//     fetch('../data/borough-rank.csv')
+//         .then(response => response.text())
+//         .then(csvText => {
+//             Papa.parse(csvText, {
+//                 header: true,
+//                 dynamicTyping: true,
+//                 complete: function(results) {
+//                     const data = results.data;
+//                     // 假设我们对数据按照 'school_primary_15' 列进行排序并提取前五名
+//                     // 提取 School Primary 15 的前五名
+//                     const topFiveSchools = [...data].sort((a, b) => b.school_primary_15 - a.school_primary_15).slice(0, 5);
 
-                    // 提取 School Secondary 15 的前五名
-                    const topFiveSchools2 = [...data].sort((a, b) => b.school_secondary_15 - a.school_secondary_15).slice(0, 5);
+//                     // 提取 School Secondary 15 的前五名
+//                     // const topFiveSchools2 = [...data].sort((a, b) => b.school_secondary_15 - a.school_secondary_15).slice(0, 5);
 
 
-                    console.log(topFiveSchools);
+//                     console.log(topFiveSchools);
 
-                    // 将两组数据合并用于图表展示
-                    const chartData = {
-                        labels: topFiveSchools.map(item => item.LSOA11NM),
-                        datasets: [{
-                            label: 'Top 5 Schools',
-                            data: topFiveSchools.map(item => Number(item.school_primary_15)),
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        }, {
-                            label: 'Top 5 Supermarkets',
-                            data: topFiveSchools2.map(item => Number(item.school_secondary_15)),
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    };
+//                     // 将两组数据合并用于图表展示
+//                     const chartData = {
+//                         labels: topFiveSchools.map(item => item.LSOA11NM),
+//                         datasets: [{
+//                             label: 'Top 5 Schools',
+//                             data: topFiveSchools.map(item => Number(item.school_primary_15)),
+//                             backgroundColor: 'rgba(255, 99, 132, 0.2)',
+//                             borderColor: 'rgba(255, 99, 132, 1)',
+//                             borderWidth: 1
+//                         // }, {
+//                         //     label: 'Top 5 Supermarkets',
+//                         //     data: topFiveSchools2.map(item => Number(item.school_secondary_15)),
+//                         //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
+//                         //     borderColor: 'rgba(54, 162, 235, 1)',
+//                         //     borderWidth: 1
+//                         }]
+//                     };
 
-                    // 创建柱状图
+//                     // 创建柱状图
                     
-                    const ctx = document.getElementById('barChart').getContext('2d');
-                    const barChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: chartData,
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    suggestedMax: 80
-                                }
-                            }
-                        }
-                    });
-                }
+//                     const ctx = document.getElementById('barChart').getContext('2d');
+//                     console.log(ctx);
+//                     const barChart = new Chart(ctx, {
+//                         type: 'bar',
+//                         data: chartData,
+//                         options: {
+//                             scales: {
+//                                 y: {
+//                                     beginAtZero: true,
+//                                     suggestedMax: 80
+//                                 }
+//                             }
+//                         }
+//                     });
+//                     console.log(barChart);
+//                 }
         
-            });
-        })
-        .catch(error => console.error('Error loading the CSV file:', error));
-}
-document.addEventListener('DOMContentLoaded', function() {
-    loadAndProcessCSV();
-});
+//             });
+//         })
+//         .catch(error => console.error('Error loading the CSV file:', error));
+// }
 
+// document.addEventListener('DOMContentLoaded', function() {
+//     loadAndProcessCSV();
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const data = [
+        { LAD11NM: 'Tower Hamlets', nearest_main_bua: 67.20 },
+        { LAD11NM: 'Hackney', nearest_main_bua: 60.86 },
+        { LAD11NM: 'Southwark', nearest_main_bua: 67.42 },
+        { LAD11NM: 'Islington', nearest_main_bua: 44.70 },
+        { LAD11NM: 'Westminster', nearest_main_bua: 50.46 }
+    ];
+
+    var svg = dimple.newSvg("#chartContainer", 400, 300);
+    var myChart = new dimple.chart(svg, data);
+    // setBounds(left, top, width, height)
+    // 减少左边距和顶部边距参数，可以使得轴更靠近绘图区域
+    myChart.setBounds(70, 40, 300, 200);
+
+    var x = myChart.addCategoryAxis("x", "LAD11NM");
+    x.title = "Boroughs";
+    x.fontSize = "7px";  // Adjust font size
+    // x.tickSize = 10;  // Moves the ticks closer to the chart
+
+    var y = myChart.addMeasureAxis("y", "nearest_main_bua");
+    y.title = "Distance to Nearest Main Built-up Area";
+    y.fontSize = "7px";  // Adjust font size
+    // y.tickSize = -15;  // Moves the ticks closer to the chart
+
+    myChart.addSeries(null, dimple.plot.bar);
+    myChart.draw();
+});
