@@ -3,7 +3,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlZW41IiwiYSI6ImNscmhxanVhYzAxd28ybHF2ejV6Z
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v11',
-    center: [0.04, 51.50], // a coordinates of London
+    center: [-0.02, 51.50], // a coordinates of London
     zoom: 9.5
 });
 
@@ -365,22 +365,23 @@ document.addEventListener('DOMContentLoaded', function () {
         { LAD11NM: 'Westminster', nearest_main_bua: 50.46 }
     ];
 
-    var svg = dimple.newSvg("#chartContainer", 400, 300);
+    var svg = dimple.newSvg("#chartContainer", 270, 230);
     var myChart = new dimple.chart(svg, data);
     // setBounds(left, top, width, height)
     // 减少左边距和顶部边距参数，可以使得轴更靠近绘图区域
-    myChart.setBounds(70, 40, 300, 200);
+    myChart.setBounds(40, 10, 220, 200);
 
     var x = myChart.addCategoryAxis("x", "LAD11NM");
     x.title = "Boroughs";
     x.fontSize = "7px";  // Adjust font size
-    // x.tickSize = 10;  // Moves the ticks closer to the chart
+    x.tickSize = -5;  // Moves the ticks closer to the chart
 
     var y = myChart.addMeasureAxis("y", "nearest_main_bua");
     y.title = "Distance to Nearest Main Built-up Area";
     y.fontSize = "7px";  // Adjust font size
-    // y.tickSize = -15;  // Moves the ticks closer to the chart
+    y.tickSize = -5;  // Moves the ticks closer to the chart
 
     myChart.addSeries(null, dimple.plot.bar);
     myChart.draw();
+
 });
