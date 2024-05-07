@@ -1,230 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scrollable Sections</title>
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Sections</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
 
-<link href='../css/map.css' rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link href='../css/map.css' rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
 
-<script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
 
-<!-- <link href='css/real.css' rel="stylesheet"> "快捷键coomand+/"" -->
-<style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        scroll-behavior: smooth;
-    }
-    nav {
-        position: fixed;
-        width: 100%;
-        background: #333;
-        padding: 10px 0;
-        text-align: center;
-        z-index: 1000;
-    }
-    nav a {
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        font-size: 18px;
-    }
-    section {
-        width: 100%;
-        height: 100vh; /* 100% of the viewport height */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        color: white;
-        text-align: center;
-    }
-    
-    #section1 { background: #ff6347; } /* Tomato */
-    #section2 { background: #4682b4; } /* SteelBlue */
-    #section3 { background: #32cd32; } /* LimeGreen */
-    #section4 { background: #ffa500; } /* Orange */
-</style>
+    <!-- <link href='css/real.css' rel="stylesheet"> "快捷键coomand+/"" -->
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        section {
+            width: 100%;
+            height: 100vh;
+            /* 100% of the viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            text-align: center;
+        }
+
+        #section1 {
+            background: #ff6347;
+        }
+
+        /* Tomato */
+        #section2 {
+            background: #4682b4;
+        }
+
+        /* SteelBlue */
+        #section3 {
+            background: #32cd32;
+        }
+
+        /* LimeGreen */
+        #section4 {
+            background: #ffa500;
+        }
+
+        /* Orange */
+    </style>
 </head>
+
 <body>
-    
-<nav>
-    <a href="#section0">Home</a>
-    <a href="#section1">Introduction</a>
-    <a href="#section2">London's Accessibility</a>
-    <a href="#section3">Time map</a>
-    <a href="#section4">Conclusion</a>
-</nav>
 
-<section id="section0">
-    <div class="main-title">
-        <h1>15-min-city in London</h1>
-        <p class="note">This website conveys Group 2's vision for future London. </p>
-    </div>
-</section>
-<section id="section1">Section 1 Content</section>
-<section id="section2">
+    <nav>
+        <a href="#section0">Home</a>
+        <a href="#section1">Introduction</a>
+        <a href="#section2">London's Accessibility</a>
+        <a href="#section3">Time map</a>
+        <a href="#section4">Conclusion</a>
+    </nav>
 
-    <div class="sidebar">
-        <h4>Number of Facilities</h4>
-        <div class="legend-title">FILL COLOR BASED ON</div>
-        <div class="divider"></div>
-        
-        <div class="layer">
-            <div class="layer-title">
-                Employment
-                <i class="bi bi-eye" id="toggle-map-icon-em" style="cursor: pointer;"></i>
-            </div>
-            
-            <ul class="legend-list">
-                
-                <li><span class="legend-circle" style="background-color: #053061;"></span> 0 - 1,000</li>
-                <li><span class="legend-circle" style="background-color: #2166ac;"></span> 1,000 - 5,000</li>
-                <li><span class="legend-circle" style="background-color: #4393c3;"></span> 5,000 - 10,000</li>
-                <li>
-                    <span class="legend-circle" style="background-color: #92c5de;"></span> 10,000 - 20,000
-                </li>
-                <li>
-                    <span class="legend-circle" style="background-color: #fddbc7;"></span> 20,000 - 30,000
-                </li>
-                <li>
-                    <span class="legend-circle" style="background-color: #f4a582;"></span> 30,000 - 40,000
-                </li>
-                <li>
-                    <span class="legend-circle" style="background-color: #d6604d;"></span> 40,000 - 100,000
-                </li>
-                <li>
-                    <span class="legend-circle" style="background-color: #b2182b;"></span> 100,000 - 500,000
-                </li>
-                <li>
-                    <span class="legend-circle" style="background-color: #b2182b;"></span> 500,000 - 700,000
-                </li>
-                <li>
-                    <span class="legend-circle" style="background-color: #67001f;"></span> 700,000 - 1,000,000
-                </li>
-            
-            </ul>
+    <section id="section0">
+        <div class="main-title">
+            <h1>15-min-city in London</h1>
+            <p class="note">This website conveys Group 2's vision for future London. </p>
         </div>
+    </section>
+    <section id="section1">Section 1 Content</section>
+    <section id="section2">
 
-        <div class="layer">
-            <div class="layer-title">
-                Urban centre
-                <i class="bi bi-eye-slash" id="toggle-map-icon-urban" style="cursor: pointer; color: #8f8f8f;"></i>
-            </div>
-            <ul class="legend-list" style="display: none;">
-                
-                <li><span class="legend-circle" style="background-color: #542788;"></span> 0 - 10</li>
-                <li><span class="legend-circle" style="background-color: #998ec3;"></span> 10 - 30</li>
-                <li><span class="legend-circle" style="background-color: #d8daeb;"></span> 30 - 50</li>
-                <li><span class="legend-circle" style="background-color: #f7f7f7;"></span> 50 - 70</li>
-                <li><span class="legend-circle" style="background-color: #fee0b6;"></span> 70 - 90</li>
-                <li><span class="legend-circle" style="background-color: #f1a340;"></span> 90 - 100</li>
-                <li><span class="legend-circle" style="background-color: #b35806;"></span> 100 + </li>
-            
-            </ul>
-        </div>
+        <div class="sidebar">
+            <h4>Number of Facilities</h4>
+            <div class="legend-title">FILL COLOR BASED ON</div>
+            <div class="divider"></div>
 
-        <div class="layer">
-            <div class="layer-title">
-                Hospital
-                <i class="bi bi-eye-slash" id="toggle-map-icon-hosp" style="cursor: pointer; color: #8f8f8f;"></i>
+            <div class="layer">
+                <div class="layer-title">
+                    Employment
+                    <i class="bi bi-eye" id="toggle-map-icon-em" style="cursor: pointer;"></i>
+                </div>
+
+                <ul class="legend-list">
+
+                    <li><span class="legend-circle" style="background-color: #053061;"></span> 0 - 1,000</li>
+                    <li><span class="legend-circle" style="background-color: #2166ac;"></span> 1,000 - 5,000</li>
+                    <li><span class="legend-circle" style="background-color: #4393c3;"></span> 5,000 - 10,000</li>
+                    <li>
+                        <span class="legend-circle" style="background-color: #92c5de;"></span> 10,000 - 20,000
+                    </li>
+                    <li>
+                        <span class="legend-circle" style="background-color: #fddbc7;"></span> 20,000 - 30,000
+                    </li>
+                    <li>
+                        <span class="legend-circle" style="background-color: #f4a582;"></span> 30,000 - 40,000
+                    </li>
+                    <li>
+                        <span class="legend-circle" style="background-color: #d6604d;"></span> 40,000 - 100,000
+                    </li>
+                    <li>
+                        <span class="legend-circle" style="background-color: #b2182b;"></span> 100,000 - 500,000
+                    </li>
+                    <li>
+                        <span class="legend-circle" style="background-color: #b2182b;"></span> 500,000 - 700,000
+                    </li>
+                    <li>
+                        <span class="legend-circle" style="background-color: #67001f;"></span> 700,000 - 1,000,000
+                    </li>
+
+                </ul>
             </div>
+
+            <div class="layer">
+                <div class="layer-title">
+                    Urban centre
+                    <i class="bi bi-eye-slash" id="toggle-map-icon-urban" style="cursor: pointer; color: #8f8f8f;"></i>
+                </div>
+                <ul class="legend-list" style="display: none;">
+
+                    <li><span class="legend-circle" style="background-color: #542788;"></span> 0 - 10</li>
+                    <li><span class="legend-circle" style="background-color: #998ec3;"></span> 10 - 30</li>
+                    <li><span class="legend-circle" style="background-color: #d8daeb;"></span> 30 - 50</li>
+                    <li><span class="legend-circle" style="background-color: #f7f7f7;"></span> 50 - 70</li>
+                    <li><span class="legend-circle" style="background-color: #fee0b6;"></span> 70 - 90</li>
+                    <li><span class="legend-circle" style="background-color: #f1a340;"></span> 90 - 100</li>
+                    <li><span class="legend-circle" style="background-color: #b35806;"></span> 100 + </li>
+
+                </ul>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">
+                    Hospital
+                    <i class="bi bi-eye-slash" id="toggle-map-icon-hosp" style="cursor: pointer; color: #8f8f8f;"></i>
+                </div>
                 <ul class="legend-list" style="display: none;">
                     <li><span class="legend-circle" style="background-color: #4dac26;"></span> 0 - 5</li>
                     <li><span class="legend-circle" style="background-color: #b8e186;"></span> 5 - 10</li>
                     <li><span class="legend-circle" style="background-color: #f1b6da;"></span> 10 - 15</li>
                     <li><span class="legend-circle" style="background-color: #d01c8b;"></span> 15 + </li>
                 </ul>
-        </div>
-
-        <div class="layer">
-            <div class="layer-title">
-                School - primary
-                <i class="bi bi-eye-slash" id="toggle-map-icon-schp" style="cursor: pointer; color: #8f8f8f;"></i>
             </div>
 
-            <ul class="legend-list" style="display: none;">
-                <li><span class="legend-circle" style="background-color: #01665e;"></span> 30 + </li>
-                <li><span class="legend-circle" style="background-color: #5ab4ac;"></span> 25 - 30</li>
-                <li><span class="legend-circle" style="background-color: #c7eae5;"></span> 20 - 25</li>
-                <li><span class="legend-circle" style="background-color: #f5f5f5;"></span> 15 - 20</li>
-                <li><span class="legend-circle" style="background-color: #f6e8c3;"></span> 10 - 15</li>
-                <li><span class="legend-circle" style="background-color: #d8b365;"></span> 5 - 10</li>
-                <li><span class="legend-circle" style="background-color: #8c510a;"></span> 0 - 5</li>
-            </ul>  
-        </div>
+            <div class="layer">
+                <div class="layer-title">
+                    School - primary
+                    <i class="bi bi-eye-slash" id="toggle-map-icon-schp" style="cursor: pointer; color: #8f8f8f;"></i>
+                </div>
 
-        <div class="layer">
-            <div class="layer-title">
-                School - secondary
-                <i class="bi bi-eye-slash" id="toggle-map-icon-schs" style="cursor: pointer; color: #8f8f8f;"></i>
+                <ul class="legend-list" style="display: none;">
+                    <li><span class="legend-circle" style="background-color: #01665e;"></span> 30 + </li>
+                    <li><span class="legend-circle" style="background-color: #5ab4ac;"></span> 25 - 30</li>
+                    <li><span class="legend-circle" style="background-color: #c7eae5;"></span> 20 - 25</li>
+                    <li><span class="legend-circle" style="background-color: #f5f5f5;"></span> 15 - 20</li>
+                    <li><span class="legend-circle" style="background-color: #f6e8c3;"></span> 10 - 15</li>
+                    <li><span class="legend-circle" style="background-color: #d8b365;"></span> 5 - 10</li>
+                    <li><span class="legend-circle" style="background-color: #8c510a;"></span> 0 - 5</li>
+                </ul>
             </div>
 
-            <ul class="legend-list" style="display: none;">
-                <li><span class="legend-circle" style="background-color: #1a9641;"></span> 7 +</li>
-                <li><span class="legend-circle" style="background-color: #a6d96a;"></span> 6 - 7</li>
-                <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 4 - 6</li>
-                <li><span class="legend-circle" style="background-color: #fdae61;"></span> 2 - 4</li>
-                <li><span class="legend-circle" style="background-color: #d7191c;"></span> 0 - 2</li>
-            </ul>  
-            
+            <div class="layer">
+                <div class="layer-title">
+                    School - secondary
+                    <i class="bi bi-eye-slash" id="toggle-map-icon-schs" style="cursor: pointer; color: #8f8f8f;"></i>
+                </div>
+
+                <ul class="legend-list" style="display: none;">
+                    <li><span class="legend-circle" style="background-color: #1a9641;"></span> 7 +</li>
+                    <li><span class="legend-circle" style="background-color: #a6d96a;"></span> 6 - 7</li>
+                    <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 4 - 6</li>
+                    <li><span class="legend-circle" style="background-color: #fdae61;"></span> 2 - 4</li>
+                    <li><span class="legend-circle" style="background-color: #d7191c;"></span> 0 - 2</li>
+                </ul>
+
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">
+                    Gp
+                    <i class="bi bi-eye-slash" id="toggle-map-icon-gp" style="cursor: pointer; color: #8f8f8f;"></i>
+                </div>
+                <ul class="legend-list" style="display: none;">
+
+                    <li><span class="legend-circle" style="background-color: #2b83ba;"></span> 0 - 5</li>
+                    <li><span class="legend-circle" style="background-color: #abdda4;"></span> 5 - 10</li>
+                    <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 10 - 15</li>
+                    <li><span class="legend-circle" style="background-color: #fdae61;"></span> 15 - 20</li>
+                    <li><span class="legend-circle" style="background-color: #d7191c;"></span> 20 + </li>
+                </ul>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">
+                    Retails(supermarket)
+                    <i class="bi bi-eye"></i>
+                </div>
+                <div class="legend-title">COLOR BASED ON</div>
+                <ul class="legend-list">
+                    <li>
+                        <span class="legend-circle" style="background-color: #8b008b;"></span> -1.00 - -0.39
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="layer">
-            <div class="layer-title">
-                Gp
-                <i class="bi bi-eye-slash" id="toggle-map-icon-gp" style="cursor: pointer; color: #8f8f8f;"></i>
-            </div>
-            <ul class="legend-list" style="display: none;">
-                
-                <li><span class="legend-circle" style="background-color: #2b83ba;"></span> 0 - 5</li>
-                <li><span class="legend-circle" style="background-color: #abdda4;"></span> 5 - 10</li>
-                <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 10 - 15</li>
-                <li><span class="legend-circle" style="background-color: #fdae61;"></span> 15 - 20</li>
-                <li><span class="legend-circle" style="background-color: #d7191c;"></span> 20 + </li>
-            </ul>
-        </div>
-
-        <div class="layer">
-            <div class="layer-title">
-                Retails(supermarket)
-                <i class="bi bi-eye"></i>
-            </div>
-            <div class="legend-title">COLOR BASED ON</div>
-            <ul class="legend-list">
-                <li>
-                    <span class="legend-circle" style="background-color: #8b008b;"></span> -1.00 - -0.39
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div id="map"></div>
-    <!-- <div id="legend" style="position: absolute; bottom: 20px; right: 10px; background: rgba(33, 33, 33, 0.8); padding: 10px; border-radius: 5px;font-size: 12px;"> -->
+        <div id="map"></div>
+        <!-- <div id="legend" style="position: absolute; bottom: 20px; right: 10px; background: rgba(33, 33, 33, 0.8); padding: 10px; border-radius: 5px;font-size: 12px;"> -->
         <h4>Employment Level</h4>
         <div><span style="background-color: #053061; width: 15px; height: 15px; display: inline-block;"></span> 0</div>
-        <div><span style="background-color: #2166ac; width: 15px; height: 15px; display: inline-block;"></span> 1,000</div>
-        <div><span style="background-color: #4393c3; width: 15px; height: 15px; display: inline-block;"></span> 5,000</div>
-        <div><span style="background-color: #92c5de; width: 15px; height: 15px; display: inline-block;"></span> 10,000</div>
-        <div><span style="background-color: #fddbc7; width: 15px; height: 15px; display: inline-block;"></span> 20,000</div>
-        <div><span style="background-color: #f4a582; width: 15px; height: 15px; display: inline-block;"></span> 30,000</div>
-        <div><span style="background-color: #d6604d; width: 15px; height: 15px; display: inline-block;"></span> 40,000</div>
-        <div><span style="background-color: #b2182b; width: 15px; height: 15px; display: inline-block;"></span> 100,000</div>
-        <div><span style="background-color: #b2182b; width: 15px; height: 15px; display: inline-block;"></span> 500,000</div>
-        <div><span style="background-color: #67001f; width: 15px; height: 15px; display: inline-block;"></span> 700,000</div>
-        
-    </div>
-    
-</section>
-<section id="section3">Section 3 Content</section>
-<section id="section4">Section 4 Content</section>
+        <div><span style="background-color: #2166ac; width: 15px; height: 15px; display: inline-block;"></span> 1,000
+        </div>
+        <div><span style="background-color: #4393c3; width: 15px; height: 15px; display: inline-block;"></span> 5,000
+        </div>
+        <div><span style="background-color: #92c5de; width: 15px; height: 15px; display: inline-block;"></span> 10,000
+        </div>
+        <div><span style="background-color: #fddbc7; width: 15px; height: 15px; display: inline-block;"></span> 20,000
+        </div>
+        <div><span style="background-color: #f4a582; width: 15px; height: 15px; display: inline-block;"></span> 30,000
+        </div>
+        <div><span style="background-color: #d6604d; width: 15px; height: 15px; display: inline-block;"></span> 40,000
+        </div>
+        <div><span style="background-color: #b2182b; width: 15px; height: 15px; display: inline-block;"></span> 100,000
+        </div>
+        <div><span style="background-color: #b2182b; width: 15px; height: 15px; display: inline-block;"></span> 500,000
+        </div>
+        <div><span style="background-color: #67001f; width: 15px; height: 15px; display: inline-block;"></span> 700,000
+        </div>
+
+        </div>
+
+    </section>
+    <section id="section3">
+        <button id="openModal">Show time map</button>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <iframe src="TM.html" frameborder="0"></iframe>
+            </div>
+        </div>
+        <style>
+            /* 定义 section3 的样式 */
+            #section3 {
+                position: relative;
+                /* 设为相对定位的容器 */
+                width: 100%;
+                /* 固定宽度，可根据需求调整 */
+                height: 1000px;
+                /* 固定高度，可根据需求调整 */
+                margin: 20px auto;
+                /* 居中显示 */
+                border: 1px solid #ccc;
+                /* 可选，添加边框以便更清晰地看到区域 */
+                overflow: hidden;
+                /* 防止内部元素溢出 */
+                background-color: #037e1f;
+                /* 可选，设置背景色 */
+            }
+
+            /* 确保 model 类的模态窗口相对于 section3 定位 */
+            .modal {
+                display: block;
+                position: absolute;
+                /* 绝对定位，相对于最近的相对定位的父元素 */
+                width: 90%;
+                /* 占 section3 宽度的百分比 */
+                height: 90%;
+                /* 占 section3 高度的百分比 */
+                background-color: rgb(92, 175, 2);
+                background-image: '../image/ipad.jpg';
+                /* 背景颜色 */
+                border-radius: 8px;
+                /* 圆角边框 */
+                padding: 20px;
+                /* 内边距 */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                /* 阴影效果 */
+                z-index: 1000;
+                /* 确保它位于其他内容之上 */
+            }
+
+            /* 样式用于关闭按钮 */
+            .close {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+
+            .modal-content {
+                background-color: #053061;
+                margin-top: 20px;
+                padding: 20px;
+                border: 1px solid #888;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            iframe {
+                width: 100%;
+                height: 80vh;
+            }
+
+            /* 禁用 */
+            .body-no-scroll {
+                overflow: hidden;
+                height: 100%;
+            }
+
+            .modal-content {
+                overflow-y: auto;
+                /* 允许垂直滚动 */
+                max-height: 90vh;
+                /* 限制最大高度，90%的视窗高度 */
+            }
+        </style>
+
+    </section>
+    <section id="section4">Section 4 Content</section>
 
 </body>
 
 <script src="../js/map.js"></script>
+
 </html>
