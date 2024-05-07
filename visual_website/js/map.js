@@ -148,7 +148,9 @@ map.on('load', function() {
         id: 'school_secondary_15',
         type: 'fill',
         source: 'ACL',
-        layout: {},
+        layout: {
+            visibility: 'none' // 设置为不可见
+        },
         paint: {
             // 使用 `interpolate` 表达式来为不同的employment_15值设置颜色
             'fill-color': [
@@ -284,8 +286,70 @@ map.on('load', function() {
         }
     });
 
+    
+    
+
 });
 
+function loadAndProcessCSV() {
+    fetch('../data/borough-rank.csv')
+        .then(response => response.text())
+        .then(csvText => {
+            Papa.parse(csvText, {
+                header: true,
+                dynamicTyping: true,
+                complete: function(results) {
+                    const data = results.data;
+                    // 假设我们对数据按照 'school_primary_15' 列进行排序并提取前五名
+                    // 提取 School Primary 15 的前五名
+                    const topFiveSchools = [...data].sort((a, b) => b.school_primary_15 - a.school_primary_15).slice(0, 5);
+
+                    // 提取 School Secondary 15 的前五名
+                    const topFiveSchools2 = [...data].sort((a, b) => b.school_secondary_15 - a.school_secondary_15).slice(0, 5);
 
 
+                    console.log(topFiveSchools);
+
+                    // 将两组数据合并用于图表展示
+                    const chartData = {
+                        labels: topFiveSchools.map(item => item.LSOA11NM),
+                        datasets: [{
+                            label: 'Top 5 Schools',
+                            data: topFiveSchools.map(item => Number(item.school_primary_15)),
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Top 5 Supermarkets',
+                            data: topFiveSchools2.map(item => Number(item.school_secondary_15)),
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    };
+
+                    // 创建柱状图
+                    
+                    const ctx = document.getElementById('barChart').getContext('2d');
+                    const barChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: chartData,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    suggestedMax: 80
+                                }
+                            }
+                        }
+                    });
+                }
+        
+            });
+        })
+        .catch(error => console.error('Error loading the CSV file:', error));
+}
+document.addEventListener('DOMContentLoaded', function() {
+    loadAndProcessCSV();
+});
 

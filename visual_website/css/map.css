@@ -183,3 +183,19 @@ section {
 #toggle-map-icon-schs:hover {
     background-color: #d3d3d3; /* 悬停时背景变暗 */
 }
+
+#chartContainer {
+    position: absolute;
+    left: 10px;   /* 从左边界偏移 */
+    bottom: 10px; /* 从底部偏移 */
+    z-index: 1100;
+    background-color: white; /* 设置背景色确保图表可读 */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 可选：添加阴影提升视觉效果 */
+}
+
+#barChart {
+    width: 400px;
+    height: 400px;
+}
