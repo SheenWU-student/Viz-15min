@@ -190,7 +190,9 @@ section {
 }
 
 #chartContainer {
-    position: absolute;
+    display: flex;
+    justify-content: center;  /* 水平居中 */
+    align-items: center;
     left: 5px;   /* 从左边界偏移 */
     bottom: 5px; /* 从底部偏移 */
     z-index: 1100;
@@ -198,6 +200,5 @@ section {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 可选：添加阴影提升视觉效果 */
 }
-
 
 

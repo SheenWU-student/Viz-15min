@@ -19,7 +19,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'employment_15',
+        id: 'employment',
         type: 'fill',
         source: 'ACL',
         layout: {
@@ -47,7 +47,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'supermarket_15',
+        id: 'supermarket',
         type: 'fill',
         source: 'ACL',
         layout: {
@@ -72,7 +72,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'gp_number_15',
+        id: 'gp',
         type: 'fill',
         source: 'ACL',
         layout: {
@@ -98,7 +98,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'hospitals_15',
+        id: 'hospitals',
         type: 'fill',
         source: 'ACL',
         layout: {
@@ -124,7 +124,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'school_primary_15',
+        id: 'primary_school',
         type: 'fill',
         source: 'ACL',
         layout: {
@@ -149,7 +149,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'school_secondary_15',
+        id: 'secondary_school',
         type: 'fill',
         source: 'ACL',
         layout: {
@@ -189,13 +189,114 @@ map.on('load', function() {
 
     // 存储所有图层的信息
 const layers = [
-    { id: 'employment_15', buttonId: 'toggle-map-icon-em' },
-    { id: 'supermarket_15', buttonId: 'toggle-map-icon-retail' },
-    { id: 'gp_number_15', buttonId: 'toggle-map-icon-gp' },
-    { id: 'hospitals_15', buttonId: 'toggle-map-icon-hosp' },
-    { id: 'school_primary_15', buttonId: 'toggle-map-icon-schp' },
-    { id: 'school_secondary_15', buttonId: 'toggle-map-icon-schs' }
+    { id: 'employment', buttonId: 'toggle-map-icon-em' },
+    { id: 'supermarket', buttonId: 'toggle-map-icon-retail' },
+    { id: 'gp', buttonId: 'toggle-map-icon-gp' },
+    { id: 'hospitals', buttonId: 'toggle-map-icon-hosp' },
+    { id: 'primary_school', buttonId: 'toggle-map-icon-schp' },
+    { id: 'secondary_school', buttonId: 'toggle-map-icon-schs' }
 ];
+
+// 这里的barchart 下一步做相应的borough边界加粗
+    const layerData = {
+        employment: [
+        { LAD11NM: 'City of London', employment_15: 556820.8 },
+        { LAD11NM: 'Westminster', employment_15: 109067.7 },
+        { LAD11NM: 'Camden', employment_15: 87368.9 },
+        { LAD11NM: 'Tower Hamlets', employment_15: 64663.8 },
+        { LAD11NM: 'Islington', employment_15: 50582.7 }
+        ],
+
+        gp: [
+            { LAD11NM: 'Westminster', gp_15: 8.9 },
+            { LAD11NM: 'Kensington and Chelsea', gp_15: 7.9 },
+            { LAD11NM: 'Islington', gp_15: 7.6 },
+            { LAD11NM: 'Hackney', gp_15: 7.6 },
+            { LAD11NM: 'Camden', gp_15: 6.5 }
+        ],
+    
+        hospitals: [
+            { LAD11NM: 'Westminster', hospitals_15: 2.7 },
+            { LAD11NM: 'City of London', hospitals_15: 2.6 },
+            { LAD11NM: 'Camden', hospitals_15: 1.7 },
+            { LAD11NM: 'Kensington and Chelsea', hospitals_15: 1.1 },
+            { LAD11NM: 'Tower Hamlets', hospitals_15: 1.0 }
+        ],
+    
+        primary_school: [
+            { LAD11NM: 'Tower Hamlets', primary_school_15: 10.9 },
+            { LAD11NM: 'Hackney', primary_school_15: 10.3 },
+            { LAD11NM: 'Southwark', primary_school_15: 10.2 },
+            { LAD11NM: 'Islington', primary_school_15: 9.7 },
+            { LAD11NM: 'Westminster', primary_school_15: 8.8 }
+        ],
+    
+        secondary_school : [
+            { LAD11NM: 'Tower Hamlets', secondary_school_15: 2.86 },
+            { LAD11NM: 'Southwark', secondary_school_15: 2.78 },
+            { LAD11NM: 'Hackney', secondary_school_15: 2.76 },
+            { LAD11NM: 'Westminster', secondary_school_15: 2.1 },
+            { LAD11NM: 'Newham', secondary_school_15: 2.08 }
+        ],
+    
+        supermarket: [
+            { LAD11NM: 'Islington', supermarket_15: 4.47 },
+            { LAD11NM: 'City of London', supermarket_15: 4 },
+            { LAD11NM: 'Camden', supermarket_15: 3.93 },
+            { LAD11NM: 'Southwark', supermarket_15: 3.51 },
+            { LAD11NM: 'Haringey', supermarket_15: 3.02 }
+        ]
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {},
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function updateChart(layerId) {
+        const data = layerData[layerId];
+        if (data) {
+            chart.data = {
+                labels: data.map(item => item.LAD11NM),
+                datasets: [{
+                    label: `Top 5 boroughs in ${layerId}`,
+                    data: data.map(item => item[layerId + '_15']), // dynamically create key
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            chart.update();
+        } else {
+            // Clear the chart if no data exists
+            chart.data.labels = [];
+            chart.data.datasets = [];
+            chart.update();
+        }
+    }
+
+    // 页面加载完毕时立即显示 "employment_15" 的数据
+    updateChart('employment');
 
 // 通用函数来切换图层的可见性，确保同时只有一个图层可见
 function toggleLayerVisibility(selectedLayerId) {
@@ -210,11 +311,13 @@ function toggleLayerVisibility(selectedLayerId) {
                 button.className = 'bi bi-eye';
                 button.style.color = '#333';
                 legendList.style.display = 'block';
+                updateChart(layer.id);
             } else {
                 map.setLayoutProperty(layer.id, 'visibility', 'none');
                 button.className = 'bi bi-eye-slash';
                 button.style.color = '#8f8f8f';
                 legendList.style.display = 'none';
+                updateChart(null);
             }
         } else {
             map.setLayoutProperty(layer.id, 'visibility', 'none');
@@ -232,37 +335,7 @@ layers.forEach(layer => {
     });
 });
 
-    
-    
-
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const data = [
-        { LAD11NM: 'Tower Hamlets', nearest_main_bua: 67.20 },
-        { LAD11NM: 'Hackney', nearest_main_bua: 60.86 },
-        { LAD11NM: 'Southwark', nearest_main_bua: 67.42 },
-        { LAD11NM: 'Islington', nearest_main_bua: 44.70 },
-        { LAD11NM: 'Westminster', nearest_main_bua: 50.46 }
-    ];
 
-    var svg = dimple.newSvg("#chartContainer", 270, 230);
-    var myChart = new dimple.chart(svg, data);
-    // setBounds(left, top, width, height)
-    // 减少左边距和顶部边距参数，可以使得轴更靠近绘图区域
-    myChart.setBounds(40, 10, 220, 200);
 
-    var x = myChart.addCategoryAxis("x", "LAD11NM");
-    x.title = "Boroughs";
-    x.fontSize = "7px";  // Adjust font size
-    x.tickSize = -5;  // Moves the ticks closer to the chart
-
-    var y = myChart.addMeasureAxis("y", "nearest_main_bua");
-    y.title = "Distance to Nearest Main Built-up Area";
-    y.fontSize = "7px";  // Adjust font size
-    y.tickSize = -5;  // Moves the ticks closer to the chart
-
-    myChart.addSeries(null, dimple.plot.bar);
-    myChart.draw();
-
-});
