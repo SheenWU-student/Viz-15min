@@ -59,6 +59,11 @@ section {
     overflow-y: auto;
 }
 
+.sidebar h3 {
+    margin-top: 10px; /* 移除默认的顶部间距 */
+    margin-bottom: 5px; /* 移除默认的底部间距 */
+}
+
 .divider {
     height: 1px; /* 横线高度 */
     width: 100%; /* 使其与侧边栏宽度一致 */
@@ -129,14 +134,14 @@ section {
     background-color: #d3d3d3; /* 悬停时背景变暗 */
 }
 
-#toggle-map-icon-urban {
+#toggle-map-icon-retail {
     cursor: pointer;
     padding: 5px; /* 为图标增加一些内边距，以便更容易点击 */
     border-radius: 5px; /* 给图标方框一些圆角样式 */
     transition: background-color 0.2s; /* 平滑过渡效果 */
 }
 
-#toggle-map-icon-urban:hover {
+#toggle-map-icon-retail:hover {
     background-color: #d3d3d3; /* 悬停时背景变暗 */
 }
 

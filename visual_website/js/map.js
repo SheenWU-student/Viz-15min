@@ -47,7 +47,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'nearest_main_bua',
+        id: 'supermarket_15',
         type: 'fill',
         source: 'ACL',
         layout: {
@@ -58,14 +58,13 @@ map.on('load', function() {
             'fill-color': [
                 'interpolate',
                 ['linear'],
-                ['get', 'nearest_main_bua'],  
-                0, '#542788',             
-                10, '#998ec3',         
-                30, '#d8daeb',          
-                50, '#f7f7f7',
-                70, '#fee0b6',
-                90, '#f1a340',
-                100, '#b35806'
+                ['get', 'supermarket_15'],  
+                0, '#2166ac',
+                2, '#67a9cf',
+                4, '#d1e5f0',
+                6, '#fddbc7',
+                8, '#ef8a62',    
+                10, '#b2182b'
                 
             ],
             'fill-opacity': 0.75
@@ -85,11 +84,14 @@ map.on('load', function() {
                 'interpolate',
                 ['linear'],
                 ['get', 'gp_number_15'],  
-                0, '#2b83ba',             
-                5, '#abdda4',         
-                10, '#ffffbf',          
-                15, '#fdae61',
-                20, '#d7191c',
+                0, '#4575b4',
+                2, '#91bfdb',
+                4, '#e0f3f8',
+                6, '#ffffbf',
+                8, '#fee090',
+                10, '#fc8d59',
+                12, '#d73027',
+                
             ],
             'fill-opacity': 0.75
         }
@@ -108,10 +110,13 @@ map.on('load', function() {
                 'interpolate',
                 ['linear'],
                 ['get', 'hospitals_15'],  
-                0, '#4dac26',             
-                5, '#b8e186',         
-                10, '#f1b6da',          
-                15, '#d01c8b',
+                0, '#4575b4',
+                1, '#91bfdb',
+                2, '#e0f3f8',
+                3, '#ffffbf',
+                5, '#fee090',
+                7, '#fc8d59',
+                10, '#d73027',
                 
             ],
             'fill-opacity': 0.75
@@ -131,14 +136,13 @@ map.on('load', function() {
                 'interpolate',
                 ['linear'],
                 ['get', 'school_primary_15'],  
-                0, '#01665e',
-                5, '#5ab4ac',
-                10, '#c7eae5',
-                15, '#f5f5f5',
-                20, '#f6e8c3',          
-                25, '#d8b365',         
-                30, '#8c510a',             
-                
+                0, '#542788',             
+                2, '#998ec3',
+                4, '#d8daeb',
+                6, '#f7f7f7',
+                8, '#fee0b6',
+                10, '#f1a340',          
+                12, '#b35806', 
             ],
             'fill-opacity': 0.75
         }
@@ -156,12 +160,13 @@ map.on('load', function() {
             'fill-color': [
                 'interpolate',
                 ['linear'],
-                ['get', 'school_primary_15'],  
-                0, '#d7191c',
-                2, '#fdae61',
-                4, '#ffffbf',
-                6, '#a6d96a',
-                7, '#1a9641',
+                ['get', 'school_secondary_15'],  
+                0, '#542788',             
+                1, '#998ec3',
+                2, '#d8daeb',
+                3, '#fee0b6',
+                4, '#f1a340',          
+                5, '#b35806', 
             ],
             'fill-opacity': 0.75
         }
@@ -182,179 +187,55 @@ map.on('load', function() {
         }
     });
 
-    document.getElementById('toggle-map-icon-em').addEventListener('click', function() {
-        var layerVisibility = map.getLayoutProperty('employment_15', 'visibility');
-        var legendList = this.parentNode.nextElementSibling; 
-    
-        // 切换图层的可见性
-        if (layerVisibility === 'visible') {
-            map.setLayoutProperty('employment_15', 'visibility', 'none'); // 隐藏图层
-            this.className = 'bi bi-eye-slash'; // 更改图标为眼睛关闭
-            this.style.color = '#8f8f8f'; // 设置图标颜色为浅灰色
+    // 存储所有图层的信息
+const layers = [
+    { id: 'employment_15', buttonId: 'toggle-map-icon-em' },
+    { id: 'supermarket_15', buttonId: 'toggle-map-icon-retail' },
+    { id: 'gp_number_15', buttonId: 'toggle-map-icon-gp' },
+    { id: 'hospitals_15', buttonId: 'toggle-map-icon-hosp' },
+    { id: 'school_primary_15', buttonId: 'toggle-map-icon-schp' },
+    { id: 'school_secondary_15', buttonId: 'toggle-map-icon-schs' }
+];
+
+// 通用函数来切换图层的可见性，确保同时只有一个图层可见
+function toggleLayerVisibility(selectedLayerId) {
+    layers.forEach(layer => {
+        const button = document.getElementById(layer.buttonId);
+        const legendList = button.parentNode.nextElementSibling;
+        const currentVisibility = map.getLayoutProperty(layer.id, 'visibility');
+
+        if (layer.id === selectedLayerId) {
+            if (currentVisibility === 'none') {
+                map.setLayoutProperty(layer.id, 'visibility', 'visible');
+                button.className = 'bi bi-eye';
+                button.style.color = '#333';
+                legendList.style.display = 'block';
+            } else {
+                map.setLayoutProperty(layer.id, 'visibility', 'none');
+                button.className = 'bi bi-eye-slash';
+                button.style.color = '#8f8f8f';
+                legendList.style.display = 'none';
+            }
+        } else {
+            map.setLayoutProperty(layer.id, 'visibility', 'none');
+            button.className = 'bi bi-eye-slash';
+            button.style.color = '#8f8f8f';
             legendList.style.display = 'none';
-        } else {
-            map.setLayoutProperty('employment_15', 'visibility', 'visible'); // 显示图层
-            this.className = 'bi bi-eye'; // 更改图标为眼睛打开
-            this.style.color = '#333';
-            legendList.style.display = 'block';
         }
     });
+}
 
-    document.getElementById('toggle-map-icon-urban').addEventListener('click', function() {
-        var layerVisibility = map.getLayoutProperty('nearest_main_bua', 'visibility');
-        var legendList = this.parentNode.nextElementSibling; 
-    
-        // 切换图层的可见性
-        if (layerVisibility === 'visible') {
-            map.setLayoutProperty('nearest_main_bua', 'visibility', 'none'); // 隐藏图层
-            this.className = 'bi bi-eye-slash'; // 更改图标为眼睛关闭
-            this.style.color = '#8f8f8f'; // 设置图标颜色为浅灰色
-            legendList.style.display = 'none';
-        } else {
-            map.setLayoutProperty('nearest_main_bua', 'visibility', 'visible'); // 显示图层
-            this.className = 'bi bi-eye'; // 更改图标为眼睛打开
-            this.style.color = '#333';
-            legendList.style.display = 'block';
-        }
+// 给每个按钮添加事件监听器
+layers.forEach(layer => {
+    document.getElementById(layer.buttonId).addEventListener('click', function() {
+        toggleLayerVisibility(layer.id);
     });
-    
-    document.getElementById('toggle-map-icon-gp').addEventListener('click', function() {
-        var layerVisibility = map.getLayoutProperty('gp_number_15', 'visibility');
-        var legendList = this.parentNode.nextElementSibling; 
-
-        if (layerVisibility === 'visible') {
-            map.setLayoutProperty('gp_number_15', 'visibility', 'none'); 
-            this.className = 'bi bi-eye-slash'; 
-            this.style.color = '#8f8f8f'; 
-            legendList.style.display = 'none';
-        } else {
-            map.setLayoutProperty('gp_number_15', 'visibility', 'visible'); 
-            this.className = 'bi bi-eye'; 
-            this.style.color = '#333';
-            legendList.style.display = 'block';
-        }
-    });
-
-    document.getElementById('toggle-map-icon-hosp').addEventListener('click', function() {
-        var layerVisibility = map.getLayoutProperty('hospitals_15', 'visibility');
-        var legendList = this.parentNode.nextElementSibling; // 获取紧跟在layer-title后面的ul元素
-
-        if (layerVisibility === 'visible') {
-            map.setLayoutProperty('hospitals_15', 'visibility', 'none'); 
-            this.className = 'bi bi-eye-slash'; 
-            this.style.color = '#8f8f8f'; 
-            legendList.style.display = 'none'; // 隐藏列表
-        } else {
-            map.setLayoutProperty('hospitals_15', 'visibility', 'visible'); 
-            this.className = 'bi bi-eye'; 
-            this.style.color = '#333';
-            legendList.style.display = 'block'; // 显示列表
-        }
-    });
-
-    document.getElementById('toggle-map-icon-schp').addEventListener('click', function() {
-        var layerVisibility = map.getLayoutProperty('school_primary_15', 'visibility');
-        var legendList = this.parentNode.nextElementSibling; // 获取紧跟在layer-title后面的ul元素
-
-        if (layerVisibility === 'visible') {
-            map.setLayoutProperty('school_primary_15', 'visibility', 'none'); 
-            this.className = 'bi bi-eye-slash'; 
-            this.style.color = '#8f8f8f'; 
-            legendList.style.display = 'none'; // 隐藏列表
-        } else {
-            map.setLayoutProperty('school_primary_15', 'visibility', 'visible'); 
-            this.className = 'bi bi-eye'; 
-            this.style.color = '#333';
-            legendList.style.display = 'block'; // 显示列表
-        }
-    });
-
-    document.getElementById('toggle-map-icon-schs').addEventListener('click', function() {
-        var layerVisibility = map.getLayoutProperty('school_secondary_15', 'visibility');
-        var legendList = this.parentNode.nextElementSibling; // 获取紧跟在layer-title后面的ul元素
-
-        if (layerVisibility === 'visible') {
-            map.setLayoutProperty('school_secondary_15', 'visibility', 'none'); 
-            this.className = 'bi bi-eye-slash'; 
-            this.style.color = '#8f8f8f'; 
-            legendList.style.display = 'none'; // 隐藏列表
-        } else {
-            map.setLayoutProperty('school_secondary_15', 'visibility', 'visible'); 
-            this.className = 'bi bi-eye'; 
-            this.style.color = '#333';
-            legendList.style.display = 'block'; // 显示列表
-        }
-    });
+});
 
     
     
 
 });
-
-// function loadAndProcessCSV() {
-//     fetch('../data/borough-rank.csv')
-//         .then(response => response.text())
-//         .then(csvText => {
-//             Papa.parse(csvText, {
-//                 header: true,
-//                 dynamicTyping: true,
-//                 complete: function(results) {
-//                     const data = results.data;
-//                     // 假设我们对数据按照 'school_primary_15' 列进行排序并提取前五名
-//                     // 提取 School Primary 15 的前五名
-//                     const topFiveSchools = [...data].sort((a, b) => b.school_primary_15 - a.school_primary_15).slice(0, 5);
-
-//                     // 提取 School Secondary 15 的前五名
-//                     // const topFiveSchools2 = [...data].sort((a, b) => b.school_secondary_15 - a.school_secondary_15).slice(0, 5);
-
-
-//                     console.log(topFiveSchools);
-
-//                     // 将两组数据合并用于图表展示
-//                     const chartData = {
-//                         labels: topFiveSchools.map(item => item.LSOA11NM),
-//                         datasets: [{
-//                             label: 'Top 5 Schools',
-//                             data: topFiveSchools.map(item => Number(item.school_primary_15)),
-//                             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-//                             borderColor: 'rgba(255, 99, 132, 1)',
-//                             borderWidth: 1
-//                         // }, {
-//                         //     label: 'Top 5 Supermarkets',
-//                         //     data: topFiveSchools2.map(item => Number(item.school_secondary_15)),
-//                         //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-//                         //     borderColor: 'rgba(54, 162, 235, 1)',
-//                         //     borderWidth: 1
-//                         }]
-//                     };
-
-//                     // 创建柱状图
-                    
-//                     const ctx = document.getElementById('barChart').getContext('2d');
-//                     console.log(ctx);
-//                     const barChart = new Chart(ctx, {
-//                         type: 'bar',
-//                         data: chartData,
-//                         options: {
-//                             scales: {
-//                                 y: {
-//                                     beginAtZero: true,
-//                                     suggestedMax: 80
-//                                 }
-//                             }
-//                         }
-//                     });
-//                     console.log(barChart);
-//                 }
-        
-//             });
-//         })
-//         .catch(error => console.error('Error loading the CSV file:', error));
-// }
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     loadAndProcessCSV();
-// });
 
 document.addEventListener('DOMContentLoaded', function () {
     const data = [

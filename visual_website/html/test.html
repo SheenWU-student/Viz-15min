@@ -99,7 +99,10 @@
     <section id="section2">
 
         <div class="sidebar">
-            <h4>Number of Facilities</h4>
+            <h3>Accessibility to Facilities</h3>
+            <p style="font-size: small; color: #909090; text-align: justify;">
+                London's accessibility to facilities by public transport. The choropleth map shows the ratio of number of facilities within a 15-minute walk from each LSOA.
+            </p>
             <div class="legend-title">FILL COLOR BASED ON</div>
             <div class="divider"></div>
 
@@ -114,45 +117,32 @@
                     <li><span class="legend-circle" style="background-color: #053061;"></span> 0 - 1,000</li>
                     <li><span class="legend-circle" style="background-color: #2166ac;"></span> 1,000 - 5,000</li>
                     <li><span class="legend-circle" style="background-color: #4393c3;"></span> 5,000 - 10,000</li>
-                    <li>
-                        <span class="legend-circle" style="background-color: #92c5de;"></span> 10,000 - 20,000
-                    </li>
-                    <li>
-                        <span class="legend-circle" style="background-color: #fddbc7;"></span> 20,000 - 30,000
-                    </li>
-                    <li>
-                        <span class="legend-circle" style="background-color: #f4a582;"></span> 30,000 - 40,000
-                    </li>
-                    <li>
-                        <span class="legend-circle" style="background-color: #d6604d;"></span> 40,000 - 100,000
-                    </li>
-                    <li>
-                        <span class="legend-circle" style="background-color: #b2182b;"></span> 100,000 - 500,000
-                    </li>
-                    <li>
-                        <span class="legend-circle" style="background-color: #b2182b;"></span> 500,000 - 700,000
-                    </li>
-                    <li>
-                        <span class="legend-circle" style="background-color: #67001f;"></span> 700,000 - 1,000,000
-                    </li>
+                    <li><span class="legend-circle" style="background-color: #92c5de;"></span> 10,000 - 20,000</li>
+                    <li><span class="legend-circle" style="background-color: #fddbc7;"></span> 20,000 - 30,000</li>
+                    <li><span class="legend-circle" style="background-color: #f4a582;"></span> 30,000 - 40,000</li>
+                    <li><span class="legend-circle" style="background-color: #d6604d;"></span> 40,000 - 100,000</li>
+                    <li><span class="legend-circle" style="background-color: #b2182b;"></span> 100,000 - 500,000</li>
+                    <li><span class="legend-circle" style="background-color: #b2182b;"></span> 500,000 - 700,000</li>
+                    <li><span class="legend-circle" style="background-color: #67001f;"></span> 700,000 - 1,000,000</li>
 
                 </ul>
             </div>
 
             <div class="layer">
                 <div class="layer-title">
-                    Urban centre
-                    <i class="bi bi-eye-slash" id="toggle-map-icon-urban" style="cursor: pointer; color: #8f8f8f;"></i>
+                    Supermarket
+                    <i class="bi bi-eye-slash" id="toggle-map-icon-retail" style="cursor: pointer; color: #8f8f8f;"></i>
                 </div>
+
                 <ul class="legend-list" style="display: none;">
 
-                    <li><span class="legend-circle" style="background-color: #542788;"></span> 0 - 10</li>
-                    <li><span class="legend-circle" style="background-color: #998ec3;"></span> 10 - 30</li>
-                    <li><span class="legend-circle" style="background-color: #d8daeb;"></span> 30 - 50</li>
-                    <li><span class="legend-circle" style="background-color: #f7f7f7;"></span> 50 - 70</li>
-                    <li><span class="legend-circle" style="background-color: #fee0b6;"></span> 70 - 90</li>
-                    <li><span class="legend-circle" style="background-color: #f1a340;"></span> 90 - 100</li>
-                    <li><span class="legend-circle" style="background-color: #b35806;"></span> 100 + </li>
+                    <li><span class="legend-circle" style="background-color: #2166ac;"></span> 0 - 2</li>
+                    <li><span class="legend-circle" style="background-color: #67a9cf;"></span> 2 - 4</li>
+                    <li><span class="legend-circle" style="background-color: #d1e5f0;"></span> 4 - 6</li>
+                    <li><span class="legend-circle" style="background-color: #fddbc7;"></span> 6 - 8</li>
+                    <li><span class="legend-circle" style="background-color: #ef8a62;"></span> 8 - 10</li>
+                    <li><span class="legend-circle" style="background-color: #b2182b;"></span> 10 +</li>
+
 
                 </ul>
             </div>
@@ -163,10 +153,31 @@
                     <i class="bi bi-eye-slash" id="toggle-map-icon-hosp" style="cursor: pointer; color: #8f8f8f;"></i>
                 </div>
                 <ul class="legend-list" style="display: none;">
-                    <li><span class="legend-circle" style="background-color: #4dac26;"></span> 0 - 2</li>
-                    <li><span class="legend-circle" style="background-color: #b8e186;"></span> 2 - 5</li>
-                    <li><span class="legend-circle" style="background-color: #f1b6da;"></span> 5 - 10</li>
-                    <li><span class="legend-circle" style="background-color: #d01c8b;"></span> 10 + </li>
+
+                    <li><span class="legend-circle" style="background-color: #4575b4;"></span> 0</li>
+                    <li><span class="legend-circle" style="background-color: #91bfdb;"></span> 1</li>
+                    <li><span class="legend-circle" style="background-color: #e0f3f8;"></span> 2</li>
+                    <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 3 - 5</li>
+                    <li><span class="legend-circle" style="background-color: #fee090;"></span> 5 - 7</li>
+                    <li><span class="legend-circle" style="background-color: #fc8d59;"></span> 7 - 10</li>
+                    <li><span class="legend-circle" style="background-color: #d73027;"></span> 10 + </li>
+                </ul>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">
+                    Gp
+                    <i class="bi bi-eye-slash" id="toggle-map-icon-gp" style="cursor: pointer; color: #8f8f8f;"></i>
+                </div>
+                <ul class="legend-list" style="display: none;">
+
+                    <li><span class="legend-circle" style="background-color: #4575b4;"></span> 0 - 2</li>
+                    <li><span class="legend-circle" style="background-color: #91bfdb;"></span> 2 - 4</li>
+                    <li><span class="legend-circle" style="background-color: #e0f3f8;"></span> 4 - 6</li>
+                    <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 6 - 8</li>
+                    <li><span class="legend-circle" style="background-color: #fee090;"></span> 8 - 10</li>
+                    <li><span class="legend-circle" style="background-color: #fc8d59;"></span> 10 - 12</li>
+                    <li><span class="legend-circle" style="background-color: #d73027;"></span> 12 + </li>
                 </ul>
             </div>
 
@@ -177,13 +188,13 @@
                 </div>
 
                 <ul class="legend-list" style="display: none;">
-                    <li><span class="legend-circle" style="background-color: #01665e;"></span> 30 + </li>
-                    <li><span class="legend-circle" style="background-color: #5ab4ac;"></span> 25 - 30</li>
-                    <li><span class="legend-circle" style="background-color: #c7eae5;"></span> 20 - 25</li>
-                    <li><span class="legend-circle" style="background-color: #f5f5f5;"></span> 15 - 20</li>
-                    <li><span class="legend-circle" style="background-color: #f6e8c3;"></span> 10 - 15</li>
-                    <li><span class="legend-circle" style="background-color: #d8b365;"></span> 5 - 10</li>
-                    <li><span class="legend-circle" style="background-color: #8c510a;"></span> 0 - 5</li>
+                    <li><span class="legend-circle" style="background-color: #542788;"></span> 0 - 2</li>
+                    <li><span class="legend-circle" style="background-color: #998ec3;"></span> 2 - 4</li>
+                    <li><span class="legend-circle" style="background-color: #d8daeb;"></span> 4 - 6</li>
+                    <li><span class="legend-circle" style="background-color: #f7f7f7;"></span> 6 - 8</li>
+                    <li><span class="legend-circle" style="background-color: #fee0b6;"></span> 8 - 10</li>
+                    <li><span class="legend-circle" style="background-color: #f1a340;"></span> 10 - 12</li>
+                    <li><span class="legend-circle" style="background-color: #b35806;"></span> 12 + </li>
                 </ul>
             </div>
 
@@ -194,42 +205,20 @@
                 </div>
 
                 <ul class="legend-list" style="display: none;">
-                    <li><span class="legend-circle" style="background-color: #1a9641;"></span> 7 +</li>
-                    <li><span class="legend-circle" style="background-color: #a6d96a;"></span> 6 - 7</li>
-                    <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 4 - 6</li>
-                    <li><span class="legend-circle" style="background-color: #fdae61;"></span> 2 - 4</li>
-                    <li><span class="legend-circle" style="background-color: #d7191c;"></span> 0 - 2</li>
+                    <li><span class="legend-circle" style="background-color: #542788;"></span> 0 </li>
+                    <li><span class="legend-circle" style="background-color: #998ec3;"></span> 1 </li>
+                    <li><span class="legend-circle" style="background-color: #d8daeb;"></span> 2 </li>
+                    <li><span class="legend-circle" style="background-color: #fee0b6;"></span> 3 </li>
+                    <li><span class="legend-circle" style="background-color: #f1a340;"></span> 4 </li>
+                    <li><span class="legend-circle" style="background-color: #b35806;"></span> 5 +</li>
                 </ul>
 
             </div>
 
-            <div class="layer">
-                <div class="layer-title">
-                    Gp
-                    <i class="bi bi-eye-slash" id="toggle-map-icon-gp" style="cursor: pointer; color: #8f8f8f;"></i>
-                </div>
-                <ul class="legend-list" style="display: none;">
 
-                    <li><span class="legend-circle" style="background-color: #2b83ba;"></span> 0 - 5</li>
-                    <li><span class="legend-circle" style="background-color: #abdda4;"></span> 5 - 10</li>
-                    <li><span class="legend-circle" style="background-color: #ffffbf;"></span> 10 - 15</li>
-                    <li><span class="legend-circle" style="background-color: #fdae61;"></span> 15 - 20</li>
-                    <li><span class="legend-circle" style="background-color: #d7191c;"></span> 20 + </li>
-                </ul>
-            </div>
-
-            <div class="layer">
-                <div class="layer-title">
-                    Retails(supermarket)
-                    <i class="bi bi-eye"></i>
-                </div>
-                <div class="legend-title">COLOR BASED ON</div>
-                <ul class="legend-list">
-                    <li>
-                        <span class="legend-circle" style="background-color: #8b008b;"></span> -1.00 - -0.39
-                    </li>
-                </ul>
-            </div>
+            <h6>Data: <a href="https://www.nature.com/articles/s41597-023-02890-w">
+                Public transport accessibility indicators to urban and regional services in Great Britain</a>.</h6>
+            
         </div>
 
         <div id="map"></div>
