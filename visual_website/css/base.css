@@ -94,16 +94,15 @@ section {
     /* 设为相对定位的容器 */
     width: 100%;
     /* 固定宽度，可根据需求调整 */
-    height: 1000px;
+    height: 100vh;
     /* 固定高度，可根据需求调整 */
-    margin: 20px auto;
+    /* margin: 20px auto; */
     /* 居中显示 */
-    border: 1px solid #ccc;
-    /* 可选，添加边框以便更清晰地看到区域 */
     overflow: hidden;
     /* 防止内部元素溢出 */
-    background-color: #037e1f;
+    background-color: #333;
     /* 可选，设置背景色 */
+
 }
 
 /* 确保 model 类的模态窗口相对于 section3 定位 */
@@ -111,12 +110,10 @@ section {
     display: block;
     position: absolute;
     /* 绝对定位，相对于最近的相对定位的父元素 */
-    width: 90%;
+    width: 99%;
     /* 占 section3 宽度的百分比 */
-    height: 90%;
+    height: 99%;
     /* 占 section3 高度的百分比 */
-    background-color: rgb(92, 175, 2);
-    background-image: '../image/ipad.jpg';
     /* 背景颜色 */
     border-radius: 8px;
     /* 圆角边框 */
@@ -126,6 +123,7 @@ section {
     /* 阴影效果 */
     z-index: 1000;
     /* 确保它位于其他内容之上 */
+    margin-top: 100px;
 }
 
 /* 样式用于关闭按钮 */
@@ -137,12 +135,6 @@ section {
     font-size: 24px;
 }
 
-.modal-content {
-    background-color: #053061;
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #888;
-}
 
 .close:hover,
 .close:focus {
