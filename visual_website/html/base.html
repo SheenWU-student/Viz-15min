@@ -19,71 +19,16 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dimple/2.3.0/dimple.latest.min.js"></script>
 
-    <!-- <link href='css/real.css' rel="stylesheet"> "快捷键coomand+/"" -->
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
+    <!-- my own  -->
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/base.js"></script>
 
-        nav {
-            position: fixed;
-            width: 100%;
-            background: #333;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-        }
-
-        nav a {
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        section {
-            width: 100%;
-            height: 100vh;
-            /* 100% of the viewport height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            color: white;
-            text-align: center;
-        }
-
-        #section1 {
-            background: #ff6347;
-        }
-
-        /* Tomato */
-        #section2 {
-            background: #4682b4;
-        }
-
-        /* SteelBlue */
-        #section3 {
-            background: #32cd32;
-        }
-
-        /* LimeGreen */
-        #section4 {
-            background: #ffa500;
-        }
-
-        /* Orange */
-    </style>
 </head>
 
 <body>
-    <link rel="stylesheet" href="../css/my.css">
 
     <nav>
-        <a href="#section0" >Home</a>
+        <a href="#section0">Home</a>
         <a href="#section1">Introduction</a>
         <a href="#section2">London's Accessibility</a>
         <a href="#section3">Time map</a>
@@ -96,18 +41,31 @@
             <p class="note">This website conveys Group 2's vision for future London. </p>
         </div>
     </section>
+
+
+
+
+
+
+
     <section id="section1">
         <div class="introPage">
             <iframe src="Introduction.html" frameborder="0"></iframe>
         </div>
-        
     </section>
+
+
+
+
+
+
     <section id="section2">
 
         <div class="sidebar">
             <h3>Accessibility to Facilities</h3>
             <p style="font-size: small; color: #909090; text-align: justify;">
-                London's accessibility to facilities by public transport. The choropleth map shows the ratio of number of facilities within a 15-minute walk from each LSOA.
+                London's accessibility to facilities by public transport. The choropleth map shows the ratio of number
+                of facilities within a 15-minute walk from each LSOA.
             </p>
             <div class="legend-title">FILL COLOR BASED ON</div>
             <div class="divider"></div>
@@ -223,8 +181,8 @@
 
 
             <h6>Data: <a href="https://www.nature.com/articles/s41597-023-02890-w">
-                Public transport accessibility indicators to urban and regional services in Great Britain</a>.</h6>
-            
+                    Public transport accessibility indicators to urban and regional services in Great Britain</a>.</h6>
+
         </div>
 
         <div id="map"></div>
@@ -232,14 +190,28 @@
         <div id="chartContainer" style="width: 310px; height: 200px; position: absolute;">
             <canvas id="myChart"></canvas>
         </div>
-        
+
 
     </section>
+
+
+
+
+
     <section id="section3">
         <div id="myModal" class="modal">
             <iframe src="TM.html" frameborder="0"></iframe>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
     <section id="section4">Section 4 Content</section>
 
 </body>
