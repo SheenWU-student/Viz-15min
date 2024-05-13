@@ -55,9 +55,10 @@
       height: auto;
       min-height: 200px;
       border-radius: 10px;
-      bottom:0px;
-      right: 0px;
+      top: 10px;
+      right: 10px;
       background-color: rgba(255, 255, 255, 0.7);
+      
     }
 
     .mychart {
@@ -105,7 +106,7 @@
         </label>
       </div>
   
-      <div style="font-size: 10px " class="txt-m txt-bold mb6">*Driving: by using electricity car</div>
+    
       <div style="font-size: 10px " class="txt-m txt-bold mb6">*Drag the maker to explore </div>
   
   
@@ -159,7 +160,7 @@
     const map = new mapboxgl.Map({
       container: 'map', // Specify the container ID
       style:
-        'mapbox://styles/mapbox/streets-v12', // Specify which map style to use
+        'mapbox://styles/mapbox/light-v11', // Specify which map style to use
       center: [-0.28, 51.50], // Specify the starting position
       zoom: 9.5 // Specify the starting zoom
     });

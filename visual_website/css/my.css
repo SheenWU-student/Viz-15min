@@ -1,0 +1,128 @@
+/* 定义 section1 的样式 */
+#section1 {
+    position: relative;
+    /* 设为相对定位的容器 */
+    width: 100%;
+    /* 固定宽度，可根据需求调整 */
+    height: 1200px;
+    /* 固定高度，可根据需求调整 */
+    margin: 20px auto;
+    /* 居中显示 */
+    border: 1px solid #ccc;
+    /* 可选，添加边框以便更清晰地看到区域 */
+    overflow: hidden;
+    /* 防止内部元素溢出 */
+    background-color: #037e1f;
+    /* 可选，设置背景色 */
+
+}
+
+.introPage{
+    display: block;
+    position: absolute;
+    /* 绝对定位，相对于最近的相对定位的父元素 */
+    width: 90%;
+    /* 占 section3 宽度的百分比 */
+    height: 90%;
+    /* 占 section3 高度的百分比 */
+    background-color: rgb(92, 175, 2);
+    /* 背景颜色 */
+    border-radius: 8px;
+    /* 圆角边框 */
+    padding: 20px;
+    /* 内边距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 阴影效果 */
+    z-index: 1000;
+    /* 确保它位于其他内容之上 */
+}
+
+#section1 iframe {
+    width: 100%;
+    height: 120vh;
+
+}
+
+
+
+/* 定义 section3 的样式 */
+#section3 {
+    position: relative;
+    /* 设为相对定位的容器 */
+    width: 100%;
+    /* 固定宽度，可根据需求调整 */
+    height: 1000px;
+    /* 固定高度，可根据需求调整 */
+    margin: 20px auto;
+    /* 居中显示 */
+    border: 1px solid #ccc;
+    /* 可选，添加边框以便更清晰地看到区域 */
+    overflow: hidden;
+    /* 防止内部元素溢出 */
+    background-color: #037e1f;
+    /* 可选，设置背景色 */
+}
+
+/* 确保 model 类的模态窗口相对于 section3 定位 */
+.modal {
+    display: block;
+    position: absolute;
+    /* 绝对定位，相对于最近的相对定位的父元素 */
+    width: 90%;
+    /* 占 section3 宽度的百分比 */
+    height: 90%;
+    /* 占 section3 高度的百分比 */
+    background-color: rgb(92, 175, 2);
+    background-image: '../image/ipad.jpg';
+    /* 背景颜色 */
+    border-radius: 8px;
+    /* 圆角边框 */
+    padding: 20px;
+    /* 内边距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 阴影效果 */
+    z-index: 1000;
+    /* 确保它位于其他内容之上 */
+}
+
+/* 样式用于关闭按钮 */
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.modal-content {
+    background-color: #053061;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #888;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#section3 iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* 禁用 */
+.body-no-scroll {
+    overflow: hidden;
+    height: 100%;
+}
+
+.modal-content {
+    overflow-y: auto;
+    /* 允许垂直滚动 */
+    max-height: 90vh;
+    /* 限制最大高度，90%的视窗高度 */
+}
+
