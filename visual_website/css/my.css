@@ -17,15 +17,6 @@
 
 }
 
-#section0 .note {
-    font-size: 14px; /* 注释文字的大小 */
-    color: rgb(255, 255, 255); /* 可以选择一种较淡的颜色以区分注释和主文字 */
-    margin-top: 5px; /* 在主文字和注释之间添加一些空间 */
-    margin-left: 25%;
-    width: 50%;
-
-}
-
 .introPage{
     display: block;
     position: absolute;

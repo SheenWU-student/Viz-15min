@@ -18,6 +18,28 @@ section {
     padding-top: 70px; /* 顶部填充 */
 }
 
+#section0 .note {
+    position: relative;
+    font-size: 14px; /* 注释文字的大小 */
+    color: rgb(226, 226, 226); /* 可以选择一种较淡的颜色以区分注释和主文字 */
+    margin-top: 0; /* 在主文字和注释之间添加一些空间 */
+    margin-left: 25%;
+    width: 50%;
+    z-index: 20;
+    text-align: justify; /* 添加对齐方式为两侧对齐 */
+}
+
+#section0::before {
+    content: ''; /* 伪元素必须有content属性 */
+    position: absolute; /* 绝对定位 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 100%; /* 宽度为父元素的100% */
+    height: 100%; /* 高度为父元素的100% */
+    background: rgba(0, 0, 0, 0.5); /* 黑色背景，50% 透明度 */
+    z-index: 1; /* 保证覆盖层位于内容之下 */
+}
+
 .radarpage {
     position: absolute;
     left: 20px;   /* 从左边界偏移 */
