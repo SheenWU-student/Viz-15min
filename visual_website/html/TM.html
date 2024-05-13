@@ -37,12 +37,116 @@
       display: flex;
       flex-direction: column;
     }
+
+    .navigate {
+      position: relative;
+      z-index: 1;
+      top: 20px;
+      left: 20px;
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .chart {
+      position: absolute;
+      width: 400px;
+      height: auto;
+      min-height: 200px;
+      border-radius: 10px;
+      bottom:0px;
+      right: 0px;
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .mychart {
+      width: 400px;
+      height: 300px;
+    }
+
   </style>
 </head>
 
 <body>
-  {/* Create a container for the map */}
   <div id="map"></div>
+
+  <!-- <div class="absolute fl my24 mx24 py24 px24 bg-gray-faint round"> -->
+    <div class="navigate">
+    <form id="params">
+      <h4 class="txt-m txt-bold mb6">Choose a travel mode:</h4>
+      <div class="mb12 mr12 toggle-group align-center">
+        <label class="toggle-container">
+          <input name="profile" type="radio" value="walking" />
+          <div class="toggle toggle--active-null toggle--null">Walking</div>
+        </label>
+        <label class="toggle-container">
+          <input name="profile" type="radio" value="cycling" checked />
+          <div class="toggle toggle--active-null toggle--null">Cycling</div>
+        </label>
+        <label class="toggle-container">
+          <input name="profile" type="radio" value="driving" />
+          <div class="toggle toggle--active-null toggle--null">Driving</div>
+        </label>
+      </div>
+      <h4 class="txt-m txt-bold mb6">Choose a maximum duration:</h4>
+      <div class="mb12 mr12 toggle-group align-center">
+        <label class="toggle-container">
+          <input name="duration" type="radio" value="5" checked />
+          <div class="toggle toggle--active-null toggle--null">5 min</div>
+        </label>
+        <label class="toggle-container">
+          <input name="duration" type="radio" value="10" />
+          <div class="toggle toggle--active-null toggle--null">10 min</div>
+        </label>
+        <label class="toggle-container">
+          <input name="duration" type="radio" value="15" />
+          <div class="toggle toggle--active-null toggle--null">15 min</div>
+        </label>
+      </div>
+  
+      <div style="font-size: 10px " class="txt-m txt-bold mb6">*Driving: by using electricity car</div>
+      <div style="font-size: 10px " class="txt-m txt-bold mb6">*Drag the maker to explore </div>
+  
+  
+  
+      <h4 class="txt-m txt-bold mb6">Toggle categories:</h4>
+      <div class="mb12">
+        <label class="toggle-container">
+          <input type="checkbox" checked name="category" value="Landscape Features" class="category-toggle" />
+          <div class="toggle">Landscape Features</div>
+        </label>
+        <label class="toggle-container">
+          <input type="checkbox" checked name="category" value="Health Support Services" class="category-toggle" />
+          <div class="toggle">Health Support Services</div>
+        </label>
+        <label class="toggle-container">
+          <input type="checkbox" checked name="category" value="Eating and Drinking" class="category-toggle" />
+          <div class="toggle">Eating and Drinking</div>
+        </label>
+        <label class="toggle-container">
+          <input type="checkbox" checked name="category" value="Public Transport" class="category-toggle" />
+          <div class="toggle">Public Transport</div>
+        </label>
+        <label class="toggle-container">
+          <input type="checkbox" checked name="category" value="Accommodation" class="category-toggle" />
+          <div class="toggle">Accommodation</div>
+        </label>
+        <label class="toggle-container">
+          <input type="checkbox" checked name="category" value="Entertainment" class="category-toggle" />
+          <div class="toggle">Entertainment</div>
+        </label>
+        <label class="toggle-container">
+          <input type="checkbox" checked name="category" value="Education" class="category-toggle" />
+          <div class="toggle">Education</div>
+        </label>
+      </div>
+    </form>
+  </div>
+
+    <div class="chart">
+      <canvas id="mychart"></canvas>
+    </div>
 
 
 
@@ -259,7 +363,7 @@
 
       //排序
 
-      const ctx = document.getElementById('myChart').getContext('2d');
+      const ctx = document.getElementById('mychart').getContext('2d');
 
       // 如果已经有图表存在，则先销毁
       if (myChart) {
@@ -305,85 +409,9 @@
   </script>
 </body>
 
-<div class="absolute fl my24 mx24 py24 px24 bg-gray-faint round">
-  <form id="params">
-    <h4 class="txt-m txt-bold mb6">Choose a travel mode:</h4>
-    <div class="mb12 mr12 toggle-group align-center">
-      <label class="toggle-container">
-        <input name="profile" type="radio" value="walking" />
-        <div class="toggle toggle--active-null toggle--null">Walking</div>
-      </label>
-      <label class="toggle-container">
-        <input name="profile" type="radio" value="cycling" checked />
-        <div class="toggle toggle--active-null toggle--null">Cycling</div>
-      </label>
-      <label class="toggle-container">
-        <input name="profile" type="radio" value="driving" />
-        <div class="toggle toggle--active-null toggle--null">Driving</div>
-      </label>
-    </div>
-    <h4 class="txt-m txt-bold mb6">Choose a maximum duration:</h4>
-    <div class="mb12 mr12 toggle-group align-center">
-      <label class="toggle-container">
-        <input name="duration" type="radio" value="5" checked />
-        <div class="toggle toggle--active-null toggle--null">5 min</div>
-      </label>
-      <label class="toggle-container">
-        <input name="duration" type="radio" value="10" />
-        <div class="toggle toggle--active-null toggle--null">10 min</div>
-      </label>
-      <label class="toggle-container">
-        <input name="duration" type="radio" value="15" />
-        <div class="toggle toggle--active-null toggle--null">15 min</div>
-      </label>
-    </div>
-
-    <div style="font-size: 10px " class="txt-m txt-bold mb6">*Driving: by using electricity car</div>
-    <div style="font-size: 10px " class="txt-m txt-bold mb6">*Drag the maker to explore </div>
 
 
 
-    <h4 class="txt-m txt-bold mb6">Toggle categories:</h4>
-    <div class="mb12">
-      <label class="toggle-container">
-        <input type="checkbox" checked name="category" value="Landscape Features" class="category-toggle" />
-        <div class="toggle">Landscape Features</div>
-      </label>
-      <label class="toggle-container">
-        <input type="checkbox" checked name="category" value="Health Support Services" class="category-toggle" />
-        <div class="toggle">Health Support Services</div>
-      </label>
-      <label class="toggle-container">
-        <input type="checkbox" checked name="category" value="Eating and Drinking" class="category-toggle" />
-        <div class="toggle">Eating and Drinking</div>
-      </label>
-      <label class="toggle-container">
-        <input type="checkbox" checked name="category" value="Public Transport" class="category-toggle" />
-        <div class="toggle">Public Transport</div>
-      </label>
-      <label class="toggle-container">
-        <input type="checkbox" checked name="category" value="Accommodation" class="category-toggle" />
-        <div class="toggle">Accommodation</div>
-      </label>
-      <label class="toggle-container">
-        <input type="checkbox" checked name="category" value="Entertainment" class="category-toggle" />
-        <div class="toggle">Entertainment</div>
-      </label>
-      <label class="toggle-container">
-        <input type="checkbox" checked name="category" value="Education" class="category-toggle" />
-        <div class="toggle">Education</div>
-      </label>
-    </div>
-  </form>
-
- 
-</div>
-
-<div style ="margin-left: 1000px; margin-top: 300px;">
-  <div class="absolute fl my24 mx24 py24 px24 bg-gray-faint round">
-    <canvas id="myChart" width="400" height="300"></canvas>
-  </div>
-</div>
 
 
 
