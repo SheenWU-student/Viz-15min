@@ -169,3 +169,7 @@ section {
     /* 限制最大高度，90%的视窗高度 */
 }
 
+#section4 {
+    border: none;
+    background-color: rgb(244, 244, 244);
+}
