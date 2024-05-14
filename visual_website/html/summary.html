@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../css/summary.css">
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+</head>
+
+<body>
+    <div id="map">
+        <div id="legend">
+            <div class="legend-title">Overall Rank</div>
+            <div class="legend-gradient"></div>
+            <div class="legend-labels">
+                <span>50+</span>
+                <span>40-50</span>
+                <span>30-40</span>
+                <span>20-30</span>
+                <span>10-20</span>
+                <span>1-10</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="radarpage">
+        <div id="scrollable-section">
+            <div class="radar-chart-container">
+                <div class="radar-canvas-wrap" data-borough="Islington">
+                    <h6>Islington</h6>
+                    <canvas id="chart0"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="City of London">
+                    <h6 >City of London</h6>
+                    <canvas id="chart1"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Camden">
+                    <h6>Camden</h6>
+                    <canvas id="chart2"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Southwark">
+                    <h6>Southwark</h6>
+                    <canvas id="chart3"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Haringey">
+                    <h6>Haringey</h6>
+                    <canvas id="chart4"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Lewisham">
+                    <h6>Lewisham</h6>
+                    <canvas id="chart5"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Lambeth">
+                    <h6>Lambeth</h6>
+                    <canvas id="chart6"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Hammersmith and Fulham">
+                    <h6>Hammersmith and Fulham</h6>
+                    <canvas id="chart7"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Westminster">
+                    <h6>Westminster</h6>
+                    <canvas id="chart8"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Merton">
+                    <h6>Merton</h6>
+                    <canvas id="chart9"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Tower Hamlets">
+                    <h6>Tower Hamlets</h6>
+                    <canvas id="chart10"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Hackney">
+                    <h6>Hackney</h6>
+                    <canvas id="chart11"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Newham">
+                    <h6>Newham</h6>
+                    <canvas id="chart12"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Greenwich">
+                    <h6>Greenwich</h6>
+                    <canvas id="chart13"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Wandsworth">
+                    <h6>Wandsworth</h6>
+                    <canvas id="chart14"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Waltham Forest">
+                    <h6>Waltham Forest</h6>
+                    <canvas id="chart15"></canvas>
+                </div>
+                
+                <div style="flex-basis: 100%; height: 20px;"></div>
+                <div class="radar-canvas-wrap" data-borough="Kensington and Chelsea">
+                    <h6>Kensington and Chelsea</h6>
+                    <canvas id="chart16"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Ealing">
+                    <h6>Ealing</h6>
+                    <canvas id="chart17"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Sutton">
+                    <h6>Sutton</h6>
+                    <canvas id="chart18"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Croydon">
+                    <h6>Croydon</h6>
+                    <canvas id="chart19"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Brent">
+                    <h6>Brent</h6>
+                    <canvas id="chart20"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Bromley">
+                    <h6>Bromley</h6>
+                    <canvas id="chart21"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Kingston upon Thames">
+                    <h6>Kingston upon Thames</h6>
+                    <canvas id="chart22"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Enfield">
+                    <h6>Enfield</h6>
+                    <canvas id="chart23"></canvas>
+                </div>
+                
+
+                <div style="flex-basis: 100%; height: 20px;"></div>
+
+                <div class="radar-canvas-wrap" data-borough="Barking and Dagenham">
+                    <h6>Barking and Dagenham</h6>
+                    <canvas id="chart24"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Barnet">
+                    <h6>Barnet</h6>
+                    <canvas id="chart25"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Redbridge">
+                    <h6>Redbridge</h6>
+                    <canvas id="chart26"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Harrow">
+                    <h6>Harrow</h6>
+                    <canvas id="chart27"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Hounslow">
+                    <h6>Hounslow</h6>
+                    <canvas id="chart28"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Bexley">
+                    <h6>Bexley</h6>
+                    <canvas id="chart29"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Havering">
+                    <h6>Havering</h6>
+                    <canvas id="chart30"></canvas>
+                </div>
+                
+                <div class="radar-canvas-wrap" data-borough="Richmond upon Thames">
+                    <h6>Richmond upon Thames</h6>
+                    <canvas id="chart31"></canvas>
+                </div>
+                
+
+                <div style="flex-basis: 100%; height: 20px;"></div>
+
+                <div class="radar-canvas-wrap" data-borough="Hillingdon">
+                    <h6>Hillingdon</h6>
+                    <canvas id="chart32"></canvas>
+                </div>
+            </div>
+        </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/summary.js"></script>
+</html>
