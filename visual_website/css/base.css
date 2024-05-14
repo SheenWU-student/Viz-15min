@@ -53,7 +53,7 @@ section {
     /* 设为相对定位的容器 */
     width: 100%;
     /* 固定宽度，可根据需求调整 */
-    height: 120vh;
+    height: 1000px;
     /* 固定高度，可根据需求调整 */
     /* margin: 10px auto; */
     /* 居中显示 */
@@ -71,19 +71,17 @@ section {
     /* 占 section3 宽度的百分比 */
     height: 99%;
     /* 占 section3 高度的百分比 */
-    padding: 20px;
-    /* 内边距 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* 阴影效果 */
     z-index: 1000;
     /* 确保它位于其他内容之上 */
-    margin-top: 100px;
+    margin-top: 160px;
 }
 
 #section1 iframe {
     width: 100%;
-    height: 100vh;
-
+    height: 90%;
+    border-radius: 20px;
 }
 
 
@@ -94,10 +92,8 @@ section {
     /* 设为相对定位的容器 */
     width: 100%;
     /* 固定宽度，可根据需求调整 */
-    height: 100vh;
+    height: 1000px;
     /* 固定高度，可根据需求调整 */
-    /* margin: 20px auto; */
-    /* 居中显示 */
     overflow: hidden;
     /* 防止内部元素溢出 */
     background-color: #333;
@@ -114,16 +110,18 @@ section {
     /* 占 section3 宽度的百分比 */
     height: 99%;
     /* 占 section3 高度的百分比 */
-    /* 背景颜色 */
-    border-radius: 8px;
-    /* 圆角边框 */
-    padding: 20px;
     /* 内边距 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* 阴影效果 */
     z-index: 1000;
     /* 确保它位于其他内容之上 */
-    margin-top: 100px;
+    margin-top: 160px;
+}
+
+#section3 iframe {
+    width: 100%;
+    height: 50%;
+    border-radius: 20px;
 }
 
 /* 样式用于关闭按钮 */
@@ -165,3 +163,20 @@ section {
     border: none;
     background-color: rgb(244, 244, 244);
 }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home {
+    font-weight: bold;
+}
+
+.other-links {
+    display: flex;
+    gap: 20px; /* 设置其他链接之间的间距 */
+}
+
+/* 可以根据需要添加其他样式 */

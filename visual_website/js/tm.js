@@ -207,9 +207,42 @@ function showbarchart(points) {
         }
     });
 
-    // console.log(categoryCounts); // 查看分类计数结果
-
+    console.log(categoryCounts); // 查看分类计数结果
     //排序
+    // 将字典转换为数组，并按值的大小进行排序
+    const sortedEntries = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1]);
+
+    // 将排序后的数组转换回字典
+    categoryCounts = Object.fromEntries(sortedEntries);
+
+    //缩写
+    // 映射关系
+    const keyMapping = {
+        'Eating and Drinking': 'EaD',
+        'Accommodation': 'ACC',
+        'Entertainment': 'ENT',
+        'Public Transport': 'PUBT',
+        'Health Support Services': 'HSS',
+        'Education': 'EDU',
+        'Landscape Features': 'LF'
+    };
+
+    // 将键修改后的字典
+    const modifiedDict = {};
+
+    // 遍历原始字典，根据映射关系修改键
+    for (const key in categoryCounts) {
+        if (keyMapping.hasOwnProperty(key)) {
+            modifiedDict[keyMapping[key]] = categoryCounts[key];
+        } else {
+            modifiedDict[key] = categoryCounts[key];
+        }
+    }
+
+    // 打印修改后的字典
+    console.log(modifiedDict);
+
+
 
     const ctx = document.getElementById('mychart').getContext('2d');
 
@@ -221,10 +254,10 @@ function showbarchart(points) {
     myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: Object.keys(categoryCounts), // 类别名称
+            labels: Object.keys(modifiedDict), // 类别名称
             datasets: [{
                 label: '# of Points',
-                data: Object.values(categoryCounts), // 每个类别的计数
+                data: Object.values(modifiedDict), // 每个类别的计数
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -255,18 +288,18 @@ function showbarchart(points) {
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const toggles = document.querySelectorAll('.toggle-color .toggle');
-    console.log(toggles);
+    // console.log(toggles);
     toggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
-            
+        toggle.addEventListener('click', function () {
+
             const checkbox = this.previousElementSibling;
             const defaultColor = '#757D82'; // 默认背景颜色
-            
+
             if (checkbox.checked) {
                 this.style.backgroundColor = this.dataset.color; // 设置为复选框的 data-color 属性值
-                
+
             } else {
                 this.style.backgroundColor = defaultColor; // 设置为默认颜色
             }
