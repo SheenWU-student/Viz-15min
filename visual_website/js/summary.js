@@ -59,39 +59,82 @@ map.on('load', function () {
         }
     });
 
+    //highlight line
+    map.addLayer({                  // Add the line highlight layer. This layer has a filter, which initially is empty.
+        id: 'lahighlight',
+        type: 'line',
+        source: {
+            type: 'vector',
+            url: 'mapbox://vvendy.3epmxa5z' // Your Mapbox tileset Map ID
+        },
+        'source-layer': 'london-boroughs_1179-3qflxf', // name of tilesets
+        'layout': {
+            'visibility': 'visible'
+        },
+        paint: {
+            'line-color': '#330066',
+            'line-width': 4
+        },
+        filter: ['==', 'name', 'empty']
+    });
+    console.log('add layer');
+
+
     // 创建一个标记，并设置为可以拖动
-    var marker = new mapboxgl.Marker({ draggable: true })
+    var marker1 = new mapboxgl.Marker({ draggable: true })
         .setLngLat([-0.13, 51.5]) // 指定标记的经度和纬度坐标
         .addTo(map); // 将标记添加到地图上
 
-    marker.on('dragend', function () {
+    var innerScrollContainer = document.getElementById('scrollable-section');
 
-            // 获取标记当前的经纬度坐标
-            var markerLngLat = marker.getLngLat();
 
-            // 查询标记所在位置的行政区域 map.project(markerLngLat)
-            var features = map.queryRenderedFeatures(map.project(markerLngLat), {
-                layers: ['borough-choropleth'] // 替换为实际的行政区域图层名称
-            });
+    // 点击创建标记
+    // map.on('click', function (e) {
+    //     var lng = e.lngLat.lng;
+    //     var lat = e.lngLat.lat;
+    //     console.log(lng, lat);
+    //     // 创建一个标记，并设置为可以拖动
+    //     var marker = new mapboxgl.Marker({ draggable: true })
+    //         .setLngLat([lng, lat]) // 指定标记的经度和纬度坐标
+    //         .addTo(map); // 将标记添加到地图上
+    // });
 
-            // 如果找到了行政区域
-            if (features.length > 0) {
-                var boroughName = features[0].properties.name; // 假设行政区域的名称属性为 'name'
-                console.log('Marker belongs to borough:', boroughName);
+    marker1.on('dragend', function () {
 
-                // 找到对应的雷达图容器
-                var radarContainer = document.querySelector('.radar-canvas-wrap[data-borough="' + boroughName + '"]');
-                console.log("found", radarContainer);
-                // 检查是否找到雷达图容器
-                if (radarContainer) {
-                    // 使用滚动动画将页面滚动到雷达图容器的位置
-                    // console.log("roll");
-                    radarContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // console.log("roll end");
-                }
+        // 获取标记当前的经纬度坐标
+        var markerLngLat = marker1.getLngLat();
+
+        // 查询标记所在位置的行政区域 map.project(markerLngLat)
+        var features = map.queryRenderedFeatures(map.project(markerLngLat), {
+            layers: ['borough-choropleth'] // 替换为实际的行政区域图层名称
+        });
+
+        // 如果找到了行政区域
+        if (features.length > 0) {
+            var boroughName = features[0].properties.name; // 假设行政区域的名称属性为 'name'
+            console.log('Marker belongs to borough:', boroughName);
+
+            if (boroughName) {
+                map.setFilter('lahighlight', ['==', 'name', boroughName]);
             } else {
-                console.log('No borough found at marker location.');
+                map.setFilter('lahighlight', ['==', 'name', 'null']);
             }
+
+
+            // 找到对应的雷达图容器
+            var radarContainer = document.querySelector('.radar-canvas-wrap[data-borough="' + boroughName + '"]');
+
+            // 检查是否找到雷达图容器
+            if (radarContainer) {
+                // 使用滚动动画将页面滚动到雷达图容器的位置
+                radarContainer.scrollIntoView({ behavior:'smooth'
+                    , block:'nearest' });  //尼玛的让老子改半天
+                innerScrollContainer.focus();
+            }
+
+        } else {
+            console.log('No borough found at marker location.');
+        }
 
     });
 

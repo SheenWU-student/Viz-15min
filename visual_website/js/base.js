@@ -24,4 +24,37 @@ document.addEventListener('DOMContentLoaded', function() {
             targetSection.scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // var iframe = document.getElementById('sum');
+    // console.log(iframe);
+
+
+
+    // marker.on('dragend', function () {
+    //     // 获取标记当前的经纬度坐标
+    //     var markerLngLat = marker.getLngLat();
+    //     // 查询标记所在位置的行政区域 map.project(markerLngLat)
+    //     var features = map.queryRenderedFeatures(map.project(markerLngLat), {
+    //         layers: ['borough-choropleth'] // 替换为实际的行政区域图层名称
+    //     });
+    //     // 如果找到了行政区域
+    //     if (features.length > 0) {
+    //         var boroughName = features[0].properties.name; // 假设行政区域的名称属性为 'name'
+    //         if (boroughName) {
+    //             map.setFilter('lahighlight', ['==', 'name', boroughName]);
+    //         } else {
+    //             map.setFilter('lahighlight', ['==', 'name', 'null']);
+    //         }
+    //         // 找到对应的雷达图容器
+    //         var radarContainer = document.querySelector('.radar-canvas-wrap[data-borough="' + boroughName + '"]');
+    //         // 检查是否找到雷达图容器
+    //         if (radarContainer) {
+    //             // 使用滚动动画将页面滚动到雷达图容器的位置
+    //             radarContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    //         }
+    //     } else {
+    //         console.log('No borough found at marker location.');
+    //     }
+    // });
 });
+
