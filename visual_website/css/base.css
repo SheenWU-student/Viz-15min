@@ -210,7 +210,45 @@ nav {
     padding-bottom: 20px; /* 确保底部有足够空间放置黑色矩形和文本 */
 }
 
-#section5 .footer-text {
+#section5 .conclusion {
+    position: relative;
+    font-size: 14px; /* 注释文字的大小 */
+    color: rgb(25, 25, 25); /* 可以选择一种较淡的颜色以区分注释和主文字 */
+    margin-top: 0; /* 在主文字和注释之间添加一些空间 */
+    width: 55%;
+    z-index: 20;
+    text-align: justify; /* 添加对齐方式为两侧对齐 */
+    margin-top: 5%;
+}
+
+#section6 {
+    background-color: rgb(244, 244, 244);
+    width: 100%;
+    height: 100vh;
+    display: flex;      /* 启用Flexbox */
+    flex-direction: column; /* 垂直堆叠子元素 */
+    justify-content: center; /* 垂直居中子元素 */
+}
+
+/* 这里可以添加自定义样式 */
+#section6 .team {
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    width: 60%;
+    margin-left: auto;  /* 使其在容器中居中 */
+    margin-right: auto; /* 使其在容器中居中 */
+    padding-top: 20px;
+    margin-top: 20px;
+    border-radius: 10px 15px 20px 25px; /* 设置圆角 */
+}
+
+#section6 .reference {
+    text-align: justify;
+    color: #053061;
+    font-size: small;
+    width: 60%;
+}
+
+#section6 .footer-text {
     position: absolute; /* 绝对定位 */
     bottom: -80px; /* 定位到父容器的底部 */
     left: 0;
@@ -221,15 +259,4 @@ nav {
     text-align: center; /* 文本居中 */
     line-height: 20px; /* 线高与区域高度一致以垂直居中文本 */
     z-index: 10; /* 确保文本在其他内容上方 */
-}
-
-#section5 .conclusion {
-    position: relative;
-    font-size: 14px; /* 注释文字的大小 */
-    color: rgb(25, 25, 25); /* 可以选择一种较淡的颜色以区分注释和主文字 */
-    margin-top: 0; /* 在主文字和注释之间添加一些空间 */
-    width: 55%;
-    z-index: 20;
-    text-align: justify; /* 添加对齐方式为两侧对齐 */
-    margin-top: 5%;
 }
