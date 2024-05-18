@@ -120,7 +120,8 @@ map.on('load', async function () {
         }
     });
 
-    const visibleCategories = new Set(); // 初始时没有类别是可见的
+    //['Health Support Services','Education','Public Transport']
+    const visibleCategories = new Set(['Health Support Services','Education']); // 初始时没有类别是可见的
 
     // 一开始就设置过滤器隐藏所有类别
     map.setFilter('points-layer', ['in', ['get', 'categoryname'], ['literal', Array.from(visibleCategories)]]);
@@ -128,8 +129,9 @@ map.on('load', async function () {
     const categoryToggles = document.querySelectorAll('.category-toggle');
     categoryToggles.forEach(function (toggle) {
         toggle.addEventListener('change', function (e) {
+            console.log(e);
             const category = e.target.value;
-            if (!e.target.checked) {
+            if (e.target.checked) {
                 visibleCategories.add(category);
             } else {
                 visibleCategories.delete(category);
@@ -207,7 +209,7 @@ function showbarchart(points) {
         }
     });
 
-    console.log(categoryCounts); // 查看分类计数结果
+    // console.log(categoryCounts); // 查看分类计数结果
     //排序
     // 将字典转换为数组，并按值的大小进行排序
     const sortedEntries = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1]);
@@ -240,7 +242,7 @@ function showbarchart(points) {
     }
 
     // 打印修改后的字典
-    console.log(modifiedDict);
+    // console.log(modifiedDict);
 
 
 
@@ -290,22 +292,36 @@ function showbarchart(points) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const toggles = document.querySelectorAll('.toggle-color .toggle');
+
+    toggles.forEach(toggle => {
+        const checkbox = toggle.previousElementSibling;
+        console.log(checkbox);
+        if (checkbox.value == 'Health Support Services'||checkbox.value == 'Education') {
+            toggle.style.backgroundColor = toggle.dataset.color;
+        }
+    });
+
+
     // console.log(toggles);
     toggles.forEach(toggle => {
         toggle.addEventListener('click', function () {
 
             const checkbox = this.previousElementSibling;
-            const defaultColor = '#757D82'; // 默认背景颜色
+            const defaultColor = '#FFFFFF'; // 默认背景颜色
 
-            if (checkbox.checked) {
+            if (!checkbox.checked) {
+                console.log("true");
                 this.style.backgroundColor = this.dataset.color; // 设置为复选框的 data-color 属性值
-
             } else {
+                console.log("false");
                 this.style.backgroundColor = defaultColor; // 设置为默认颜色
             }
+
         });
     });
+
+
+   
 });
 
 
-//     const defaultColor = toggle.style.backgroundColor;
