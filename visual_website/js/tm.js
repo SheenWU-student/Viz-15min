@@ -121,7 +121,7 @@ map.on('load', async function () {
     });
 
     //['Health Support Services','Education','Public Transport']
-    const visibleCategories = new Set(['Health Support Services','Education']); // 初始时没有类别是可见的
+    const visibleCategories = new Set(['Health Support Services','Education','Landscape Features','Entertainment']); // 初始时没有类别是可见的
 
     // 一开始就设置过滤器隐藏所有类别
     map.setFilter('points-layer', ['in', ['get', 'categoryname'], ['literal', Array.from(visibleCategories)]]);
@@ -129,7 +129,6 @@ map.on('load', async function () {
     const categoryToggles = document.querySelectorAll('.category-toggle');
     categoryToggles.forEach(function (toggle) {
         toggle.addEventListener('change', function (e) {
-            console.log(e);
             const category = e.target.value;
             if (e.target.checked) {
                 visibleCategories.add(category);
@@ -295,8 +294,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     toggles.forEach(toggle => {
         const checkbox = toggle.previousElementSibling;
-        console.log(checkbox);
-        if (checkbox.value == 'Health Support Services'||checkbox.value == 'Education') {
+        if (checkbox.value == 'Health Support Services'
+        ||checkbox.value == 'Education'
+        ||checkbox.value == 'Landscape Features'
+        ||checkbox.value == 'Entertainment'
+    ) {
             toggle.style.backgroundColor = toggle.dataset.color;
         }
     });
@@ -310,10 +312,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const defaultColor = '#FFFFFF'; // 默认背景颜色
 
             if (!checkbox.checked) {
-                console.log("true");
                 this.style.backgroundColor = this.dataset.color; // 设置为复选框的 data-color 属性值
             } else {
-                console.log("false");
                 this.style.backgroundColor = defaultColor; // 设置为默认颜色
             }
 
