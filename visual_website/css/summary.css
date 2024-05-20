@@ -63,13 +63,14 @@ body {
 
 .radarpage {
     position: absolute;
-    right: 50px;
+    right: 20px;
     /* 从左边界偏移 */
     bottom: 20px;
+    top: 20px;
     background-color: white;
     /* 设置背景色确保图表可读 */
-    height: 90%;
-    width: 25%;
+    height: 95%;
+    width: 20%;
     overflow-y: scroll;
 }
 
@@ -93,7 +94,7 @@ body {
     /* 可根据实际需要调整 */
     justify-content: center;
     /* 水平居中内容 */
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 .radar-canvas-wrap h6 {
