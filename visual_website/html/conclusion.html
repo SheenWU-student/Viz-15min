@@ -8,6 +8,9 @@
             font-family: Arial, sans-serif;
             padding: 0;
             background: #f4f4f4;
+            display: flex;
+    justify-content: center;
+    align-items: center;
         }
 
         .container {
@@ -20,11 +23,14 @@
         .section {
             display: flex;
             align-items: center;
+            margin-bottom: 5px;
+            width: 90%;
+            margin-left: 5%;
         }
 
        .section img {
     flex: none; /* Remove flex to stop the image from growing with flex container */
-    width: 500px; /* Fixed width */
+    width: 450px; /* Fixed width */
     height: auto; /* Height will scale to maintain the aspect ratio */
     transition: transform 0.3s ease;
 }
@@ -36,15 +42,16 @@
 
         .text-content {
             flex: 2;
-            padding-left: 20px;
+            padding-left: 30px;
+            padding-right: 20px;
         }
 
-        .section h2 {
+        .section h3 {
             color: #333;
         }
 
         .section p {
-            font-size: 16px;
+            font-size: 15px;
             color: #333;
         }
     </style>
@@ -52,35 +59,35 @@
 <body>
     <div class="container">
         <div class="section">
-            <img src="../image/CP1.png" >
+            <img src="../image/map1.png" >
             <div class="text-content">
-                <h2>1. Accessibility to Facilities Condition</h2>
-                <p><strong>Inner London has the most accessibility to most services</strong> such as employment, supermarkets, GPs, and schools by walk and public transport while some town centres including Croydon Town Centre, Stratford Centre, and transport centres such as Heathrow International Airport also have high accessibility to these services.<br></p>
+                <h3>1. Accessibility to Facilities Condition</h3>
+                <p>Inner London has the most accessibility to most services such as employment, supermarkets, GPs, and schools by walk and public transport while some town centres including Croydon Town Centre, Stratford Centre, and transport centres such as Heathrow International Airport also have high accessibility to these services.<br></p>
                 <p>Among all services, hospitals somehow highly assemble in Westminster.</p>
             </div>
         </div>
         <div class="section">
-            <img src="../image/CP3.png" >
+            <img src="../image/map2.png" >
             <div class="text-content">
-                <h2>2. Services’ Characteristics & Travel Mode Characteristics</h2>
-                <p><strong>The POI present that services have extremely high density in the centre of London compared to inner London and Outer London </strong> while ‘Eating and Drinking’ are always the most services in London. The density of services goes with the pedestrian volume. In outer London, services tend to gather alongside the main road while in the centre of London it appears even on the side road.<br></p>
-                <p><strong>The reachable areas in a certain time range are similar between cycling and driving</strong>. Therefore, increasing cycling lane and promoting cycling are recommended actions to do in London. Cycling has a carbon footprint up to 30 times lower than a fossil fuel car per mile and even less than that of walking or taking public transportation (Future.Green, 2024).</p>
+                <h3>2. Services’ Characteristics & Travel Mode Characteristics</h3>
+                <p>The POI present that services have extremely high density in the centre of London compared to inner London and Outer London while ‘Eating and Drinking’ are always the most services in London. The density of services goes with the pedestrian volume. In outer London, services tend to gather alongside the main road while in the centre of London it appears even on the side road.<br></p>
+                <p>The reachable areas in a certain time range are similar between cycling and driving. Therefore, increasing cycling lane and promoting cycling are recommended actions to do in London. Cycling has a carbon footprint up to 30 times lower than a fossil fuel car per mile and even less than that of walking or taking public transportation (Future.Green, 2024).</p>
             </div>
             
         </div>
         <div class="section">
-            <img src="../image/CP2.png" >
+            <img src="../image/map3.png" >
             <div class="text-content">
-                <h2>3. Overall Accessibility Condition</h2>
-                <p>The highest overall reachable borough in London is Westminster and the least one is Havering.<br></p>
-                <p><strong>The boroughs closer to the centre of London tend to have higher accessibility to overall services.</strong></p>
+                <h3>3. Overall Accessibility Condition</h3>
+                <p>The ranking map shows that boroughs closer to the centre of London generally have higher accessibility to services, while Westminster ranks as the most accessible borough, Havering ranks as the least. <br></p>
+                <p>Apart from this, the variations between different boroughs might be influenced by several factors including the density of key amenities, and the availability of transportation infrastructure.</p>
             </div>
         </div>
         
         
         <div class="section">
-            <div class="text-content", style="text-align: center;">
-                <p>In conclude, to some extent, London can be considered as a 15-minute city. We believed that improving accessibility to services in these low-ranking boroughs can change London to our expected <strong>“urban future”</strong>.</p>
+            <div class="text-content", style="text-align: center; color: white;background-color: #154172; padding: 15px; border-radius: 5px; margin-top: 5px;">
+                In conclusion, to some extent, London can be considered as a 15-minute city. And it is making significant strides towards becoming an accessible and sustainable city. We believed that improving accessibility to services in these low-ranking boroughs can change London to our expected <strong>“urban future”</strong>.
             </div>
         </div>
     </div>
