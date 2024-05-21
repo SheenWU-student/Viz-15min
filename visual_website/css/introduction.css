@@ -127,6 +127,11 @@ img {
     font-size: 1vw;
 }
 
+.reason h4{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
 
 /* body {
     font-size: 1vw; 字体大小为视口宽度的2%
