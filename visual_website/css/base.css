@@ -93,7 +93,7 @@ section {
     /* 设为相对定位的容器 */
     width: 100%;
     /* 固定宽度，可根据需求调整 */
-    height: 850px;
+    height: 1000px;
     /* 固定高度，可根据需求调整 */
     overflow: hidden;
     /* 防止内部元素溢出 */
